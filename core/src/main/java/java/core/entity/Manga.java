@@ -1,10 +1,7 @@
 package java.core.entity;
 
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.List;
 
 
@@ -20,8 +17,8 @@ public class Manga extends GenericEntity{
     @ElementCollection
     private List<String> chapterList;
 
-    @ManyToOne
-    private Review review;
+    @OneToMany(targetEntity = Review.class, mappedBy="Manga")
+    private List<Review> reviewList;
 
     @ManyToMany(mappedBy = "manga")
     private List<Collection> collectionList;
