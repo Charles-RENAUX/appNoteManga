@@ -13,7 +13,8 @@ public class Manga extends GenericEntity{
 
     private String name;
     private String editor;
-    private Integer note;
+    private String resume;
+    private Float note;
     private String image;
 
     @ElementCollection

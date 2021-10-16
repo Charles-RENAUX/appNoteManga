@@ -1,4 +1,9 @@
 package java.core.dao;
 
-public interface UserDAO {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.core.entity.User;
+
+public interface UserDAO extends JpaRepository<User,Long> {
+
 }
