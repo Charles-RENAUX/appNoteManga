@@ -33,7 +33,7 @@ public class MangaService {
     public void addManga(Manga manga){
         mangaDAO.save(manga);
     }
-    
+
     public List<Manga> getAllMangas(){
         return mangaDAO.findAll();
     }
