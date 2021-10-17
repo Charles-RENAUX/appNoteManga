@@ -23,4 +23,74 @@ public class Manga extends GenericEntity{
     @ManyToMany(mappedBy = "manga")
     private List<Collection> collectionList;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEditor() {
+        return editor;
+    }
+
+    public void setEditor(String editor) {
+        this.editor = editor;
+    }
+
+    public String getResume() {
+        return resume;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
+    }
+
+    public Float getNote() {
+        float _note = 0;
+        for (Review review : this.reviewList){
+            _note += review.getNote();
+        }
+        _note = _note/(this.reviewList.size());
+        if (this.note != _note)
+            this.note = _note;
+        return this.note;
+    }
+
+    public void setNote(Float note) {
+        this.note = note;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public List<String> getChapterList() {
+        return chapterList;
+    }
+
+    public void setChapterList(List<String> chapterList) {
+        this.chapterList = chapterList;
+    }
+
+    public List<Review> getReviewList() {
+        return reviewList;
+    }
+
+    public void setReviewList(List<Review> reviewList) {
+        this.reviewList = reviewList;
+    }
+
+    public List<Collection> getCollectionList() {
+        return collectionList;
+    }
+
+    public void setCollectionList(List<Collection> collectionList) {
+        this.collectionList = collectionList;
+    }
 }
