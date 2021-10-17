@@ -17,19 +17,19 @@ public class MangaController {
     }
 
     @GetMapping("/welcome")
-    private String getListOfCompanies(ModelMap map) {
+    private String getListNewMangas(ModelMap map) {
         map.addAttribute("listNewManga", mangaService.getNewMangas());
         return "newMangaPage";
     }
 
     @GetMapping("/explore")
-    private String getListOfCompanies(ModelMap map) {
+    private String getListExplore(ModelMap map) {
         map.addAttribute("listExploreManga", mangaService.getAllMangas());
         return "explorePage";
     }
 
     @GetMapping("/reviewPage/{id}")
-    private String getListOfCompanies(ModelMap map, @PathVariable("id") long id) {
+    private String getReviewManga(ModelMap map, @PathVariable("id") long id) {
         map.addAttribute("listExploreManga", mangaService.getManga(id));
         return "reviewMangaPage";
     }
