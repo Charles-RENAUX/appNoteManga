@@ -30,7 +30,7 @@
     <div class="listMangaHolder" style="visibility: visible">
         <ul>
             #foreach($manga in $listExploreManga)
-                <a type="image" class="mangaCoverExplore" href="localhost:8080/reviewPage/"+$manga.Id src=$manga.CoverPath alt=$manga.Title>
+                <a type="image" class="mangaCoverExplore" href="localhost:8080/reviewPage/"+$manga.Id src=$manga.Image alt=$manga.Name>
             #end
         </ul>
     </div>

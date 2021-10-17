@@ -31,7 +31,7 @@
     <h3 class="newTitle">Nouveautés</h3>
     <ul>
         #foreach($manga in $listNewManga)
-            <a type="image" href="localhost:8080/reviewPage/"+$manga.Id class="mangaImageNew" src=$manga.CoverPath alt=$manga.Title>
+            <a type="image" href="localhost:8080/reviewPage/"+$manga.Id class="mangaImageNew" src=$manga.Image alt=$manga.Name>
         #end
     </ul>
 </div>

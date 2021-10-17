@@ -29,11 +29,11 @@
     </div>
     <div class="mangaInfosReview">
         <div class="coverMangaReview">
-            <image class="imageCoverMangaReview" src=$manga.CoverPath alt=$manga.Title></image>
+            <image class="imageCoverMangaReview" src=$manga.Image alt=$manga.Name></image>
         </div>
         <div class="textMangaReview">
             <h4 class="titleMangaReview">
-                $manga.Title
+                $manga.Name
             </h4>
             <ul>
                 #if($manga.Note<=1)
@@ -115,15 +115,15 @@
                 #end
             </ul>
             <p class="synopsysReview">
-                $manga.Synopsys
+                $manga.Resume
             </p>
         </div>
     </div>
     <div class="listReviews">
         <ul>
-            #foreach($revieww in $manga.ListReview)
+            #foreach($revieww in $manga.reviewList)
                 <p class="elementReview">
-                    $revieww.Content
+                    $revieww.text
                 </p>
             #end
         </ul>
