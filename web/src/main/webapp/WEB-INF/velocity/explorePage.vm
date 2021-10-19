@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="tHt.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Page Manga</title>
+    <header>
+        <input id="settingsButtonShow" class="settingsMainButton" type="image" src="settings.png" size="0" />
+        <input class="logInMainButton" type="image" src="login.png" size="0" />
+    </header>
+    <script>
+        document.getElementById('settingsButtonShow').onclick = function() {
+            var show = document.getElementById("visibilitySettings")
+            if(show.style.visibility=="visible"){
+                show.style.visibility="hidden"
+            }else{
+                show.style.visibility="visible"
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="settingsMenuToShow" id="visibilitySettings" style="visibility: hidden">
+        <div class="divTriangle"></div>
+        <div class="settingsMainMenu">
+            <a class="textButton" href="localhost:8080/explore">Explorer</a>
+            <a class="textButton">A propos</a>
+        </div>
+    </div>
+    <div class="listMangaHolder" style="visibility: visible">
+        <ul>
+            #foreach($manga in $listExploreManga)
+                <a type="image" class="mangaCoverExplore" href="localhost:8080/reviewPage/"+$manga.Id src=$manga.Image alt=$manga.Name>
+            #end
+        </ul>
+    </div>
+</body>
+</html>
