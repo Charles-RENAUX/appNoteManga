@@ -23,6 +23,16 @@ public class Manga extends GenericEntity{
     @ManyToMany(mappedBy = "manga")
     private List<Collection> collectionList;
 
+    public Manga(String name, String editor, String resume) {
+        this.name = name;
+        this.editor = editor;
+        this.resume = resume;
+    }
+
+    public Manga() {
+
+    }
+
     public String getName() {
         return name;
     }
