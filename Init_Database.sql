@@ -33,7 +33,7 @@ CREATE TABLE `manga`
     edition      VARCHAR(20),
     parutionDate DATE,
     note         INT,
-        img VARCHAR (200)
+    img VARCHAR (200)
 );
 
 
@@ -59,3 +59,5 @@ CREATE TABLE `collection`
     updateDate   DATE,
     name         VARCHAR(50)
 );
+
+INSERT INTO user (name,firstname,pseudo,password,admin) VALUES ('Compte', 'Admin','admin','admin', TRUE)
