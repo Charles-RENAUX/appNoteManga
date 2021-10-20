@@ -16,6 +16,17 @@ public class User extends GenericEntity {
     @ManyToMany(mappedBy = "user")
     private List<Collection> collectionList;
 
+    public User(String name, String firstname, String adress, String pseudo, String password) {
+        this.name = name;
+        this.firstname = firstname;
+        this.adress = adress;
+        this.pseudo = pseudo;
+        this.password = password;
+    }
+
+    public User() {
+    }
+
     public String getName() {
         return name;
     }
