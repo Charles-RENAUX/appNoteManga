@@ -22,9 +22,11 @@ public class User extends GenericEntity {
         this.adress = adress;
         this.pseudo = pseudo;
         this.password = password;
+        this.admin = false;
     }
 
     public User() {
+        this.admin = false;
     }
 
     public String getName() {
