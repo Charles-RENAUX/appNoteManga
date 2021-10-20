@@ -7,7 +7,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Review extends GenericEntity{
     private String text;
-    private String autor;
+    private long autorId;
     private Integer note;
     private Long like;
     private Long dislike;
@@ -15,9 +15,9 @@ public class Review extends GenericEntity{
     @ManyToOne
     private Manga manga;
 
-    public Review(String text, String autor) {
+    public Review(String text, long autorId) {
         this.text = text;
-        this.autor = autor;
+        this.autorId = autorId;
     }
 
     public Review() {
@@ -65,11 +65,11 @@ public class Review extends GenericEntity{
         this.manga = manga;
     }
 
-    public String getAutor() {
-        return autor;
+    public long getAutorId() {
+        return autorId;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public void setAutorId(long autorId) {
+        this.autorId = autorId;
     }
 }
