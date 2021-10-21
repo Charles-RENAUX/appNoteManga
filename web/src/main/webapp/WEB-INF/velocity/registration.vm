@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page d'inscription</title>
+    <META charset="utf-8">
+    <style type="text/css">
+            #include("css/log_style.css")
+</head>
+
+<body>
+<section id="main">
+    <h1>Inscription</h1>
+    <form>
+        <h3>Prénom</h3>
+        <input id="boite" type="text" name="name" /><br />
+        <h3>Nom</h3>
+        <input id="boite" type="text" name="firstname" /><br />
+        <h3>Email</h3>
+        <input id="boite" type="text" name="email" /><br />
+        <h3>Pseudo</h3>
+        <input id="boite" type="text" name="pseudo" /><br />
+        <h3>Mot de passe</h3>
+        <input id="boite" type="password" name="password" /><br />
+        <h3>Confirmation du mot de passe</h3>
+        <input id="boite" type="password" name="password" /><br />
+        <input id="connexion" type="submit" value="Inscription"/>
+    </form>
+</section>
+
+<div>
+    <a href="Page_de_connexion">Déjà inscrit ? Cliquez ici</a>
+</div>
+
+<div id="retour">
+    <a id="retour" href=localhost:8080/welcome> &#8592 Retour à la page d'accueil </a>
+</div>
+</body>
+</html>
