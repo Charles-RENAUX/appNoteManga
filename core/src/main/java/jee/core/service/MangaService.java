@@ -1,10 +1,11 @@
-package java.core.service;
+package jee.core.service;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.core.dao.MangaDAO;
-import java.core.entity.Manga;
+import jee.core.dao.MangaDAO;
+import jee.core.entity.Manga;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +15,8 @@ public class MangaService {
 
     private MangaDAO mangaDAO;
 
-    public MangaService (MangaDAO _mangaDao){
-        this.mangaDAO = _mangaDao;
+    public MangaService (final MangaDAO mangaDAO){
+        this.mangaDAO = mangaDAO;
     }
 
     public void delete(Manga manga){

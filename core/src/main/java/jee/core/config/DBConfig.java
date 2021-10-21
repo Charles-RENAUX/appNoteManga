@@ -1,4 +1,4 @@
-package java.core.config;
+package jee.core.config;
 
 
 import com.zaxxer.hikari.HikariConfig;
@@ -19,7 +19,7 @@ import java.sql.SQLException;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "java.core.dao")
+@EnableJpaRepositories(basePackages = "jee.core.dao")
 public class DBConfig {
 
     @Bean(destroyMethod = "close")
@@ -50,7 +50,7 @@ public class DBConfig {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.getJpaPropertyMap().put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-        factory.setPackagesToScan("java.core.entity");
+        factory.setPackagesToScan("jee.core.entity");
         factory.setDataSource(dataSource);
         factory.afterPropertiesSet();
         return factory.getObject();

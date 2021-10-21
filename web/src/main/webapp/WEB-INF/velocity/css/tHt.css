@@ -1,0 +1,129 @@
+
+
+html{
+    background-color: aliceblue;
+}
+
+.settingsMainButton{
+    height: 7%;
+    width: 7%;
+}
+
+.logInMainButton{
+    height: 7%;
+    width: 7%;
+}
+
+header{
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 15px;
+    padding: 1%;
+    z-index: 1;
+}
+
+.textButton{
+    background: none;
+    border: none;
+    margin: 2%;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+    font-family: Impact;
+    color: cornsilk;
+}
+
+div.settingsMainMenu{
+    z-index: 6;
+    margin-top: 1%;
+    background-color: #b30015;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    float: left;
+    padding-bottom: 10%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+}
+.divTriangle{
+    background-color: #b30015;
+    padding: 3%;
+    float: left;
+    transform: rotate(45deg);
+    position: absolute;
+    z-index: 2;
+    margin-left: 1.5%;
+
+}
+
+.settingsMenuToShow{
+    z-index: 6;
+}
+
+.mangaCoverExplore{
+    z-index: -2;
+    height: 23%;
+    width: 23%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.listMangaHolder{
+    margin-top: 5%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newTitle{
+    border: solid;
+    background-color: lightgray;
+    text-align: center;
+    font-size: x-large;
+}
+
+.mangaImageNew{
+    width: 32%;
+    height: 32%;
+}
+
+.startMark{
+    width: 7%;
+    height: 7%;
+}
+
+.mangaInfosReview{
+    display: flex;
+}
+
+.titleMangaReview{
+    text-align: center;
+    font-size: x-large;
+}
+
+.synopsysReview{
+    text-align: center;
+    border-style: solid;
+    margin-left: 8%;
+    font-size: small;
+    padding: 0.5%;
+    background-color: ghostwhite;
+}
+
+.coverMangaReview{
+    width: 30%;
+    height: 30%;
+    margin: 3%;
+}
+
+.elementReview{
+    border-style: solid;
+    padding: 0.5%;
+    margin: 0.3%;
+    background-color: ghostwhite;
+}
+

@@ -60,4 +60,4 @@ CREATE TABLE `collection`
     name         VARCHAR(50)
 );
 
-INSERT INTO user (name,firstname,pseudo,password,admin) VALUES ('Compte', 'Admin','admin','admin', TRUE)
+INSERT INTO user (name,firstname,pseudo,password,adminn) VALUES ('Compte', 'Admin','admin','admin', TRUE)

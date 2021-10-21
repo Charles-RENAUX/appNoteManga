@@ -1,4 +1,4 @@
-package java.core.entity;
+package jee.core.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -8,11 +8,11 @@ import java.util.List;
 public class Collection extends GenericEntity{
     private String name;
 
-    @ManyToMany(mappedBy = "collection")
-    private List<Manga> mangaList;
+    //@ManyToMany(mappedBy = "collection")
+    //private List<Manga> mangaList;
 
-    @ManyToMany(mappedBy="collection")
-    private List<User> userList;
+    //@ManyToMany(mappedBy="collection")
+    //private List<User> userList;
 
     public Collection(String name) {
         this.name = name;
@@ -30,19 +30,19 @@ public class Collection extends GenericEntity{
         this.name = name;
     }
 
-    public List<Manga> getMangaList() {
+    /*public List<Manga> getMangaList() {
         return mangaList;
     }
 
     public void setMangaList(List<Manga> mangaList) {
         this.mangaList = mangaList;
-    }
+    }*/
 
-    public List<User> getUserList() {
+    /*public List<User> getUserList() {
         return userList;
     }
 
     public void setUserList(List<User> userList) {
         this.userList = userList;
-    }
+    }*/
 }

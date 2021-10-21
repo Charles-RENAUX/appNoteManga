@@ -1,10 +1,11 @@
-package java.web;
+package jee.web;
 
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import java.core.config.AppConfig;
-import java.core.config.DBConfig;
-import java.web.config.WebConfig;
+import jee.core.config.AppConfig;
+import jee.core.config.DBConfig;
+import jee.web.config.WebConfig;
 
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
@@ -27,7 +28,7 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
     @Override
     protected String[] getServletMappings() {
         String[] servMap = new String[]{
-                "/welcome"
+                "/"
         };
         return servMap;
     }

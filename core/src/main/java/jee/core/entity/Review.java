@@ -1,15 +1,14 @@
-package java.core.entity;
+package jee.core.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Review extends GenericEntity{
     private String text;
     private long autorId;
     private Integer note;
-    private Long like;
+    private Long likee;
     private Long dislike;
 
     @ManyToOne
@@ -42,11 +41,11 @@ public class Review extends GenericEntity{
     }
 
     public Long getLike() {
-        return like;
+        return likee;
     }
 
     public void setLike(Long like) {
-        this.like = like;
+        this.likee = like;
     }
 
     public Long getDislike() {

@@ -1,10 +1,10 @@
-package java.core.service;
+package jee.core.service;
 
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.core.dao.ReviewDAO;
-import java.core.entity.Review;
+import jee.core.dao.ReviewDAO;
+import jee.core.entity.Review;
 import java.util.ArrayList;
 import java.util.List;
 

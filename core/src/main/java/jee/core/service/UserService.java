@@ -1,4 +1,4 @@
-package java.core.service;
+package jee.core.service;
 
 public class UserService {
 }

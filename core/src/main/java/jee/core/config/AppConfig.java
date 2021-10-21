@@ -1,4 +1,4 @@
-package java.core.config;
+package jee.core.config;
 
 
 import com.zaxxer.hikari.HikariConfig;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "java.core.service")
+@ComponentScan(basePackages = "jee.core")
 public class AppConfig {
 
     public static final String DB_HOST = "localhost:3306";

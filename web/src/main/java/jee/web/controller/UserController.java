@@ -1,4 +1,4 @@
-package java.web.controller;
+package jee.web.controller;
 
 public class UserController {
 }

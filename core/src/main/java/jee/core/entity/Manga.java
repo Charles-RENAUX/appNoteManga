@@ -1,7 +1,12 @@
-package java.core.entity;
+package jee.core.entity;
 
 
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+
+import javax.persistence.ElementCollection;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 
@@ -17,11 +22,11 @@ public class Manga extends GenericEntity{
     @ElementCollection
     private List<String> chapterList;
 
-    @OneToMany(targetEntity = Review.class, mappedBy="Manga")
+    @OneToMany(targetEntity = Review.class, mappedBy="manga")
     private List<Review> reviewList;
 
-    @ManyToMany(mappedBy = "manga")
-    private List<Collection> collectionList;
+    //@ManyToMany(mappedBy = "manga")
+    //private List<Collection> collectionList;
 
     public Manga(String name, String editor, String resume) {
         this.name = name;
@@ -30,7 +35,6 @@ public class Manga extends GenericEntity{
     }
 
     public Manga() {
-
     }
 
     public String getName() {
@@ -96,11 +100,11 @@ public class Manga extends GenericEntity{
         this.reviewList = reviewList;
     }
 
-    public List<Collection> getCollectionList() {
+    /*public List<Collection> getCollectionList() {
         return collectionList;
     }
 
     public void setCollectionList(List<Collection> collectionList) {
         this.collectionList = collectionList;
-    }
+    }*/
 }

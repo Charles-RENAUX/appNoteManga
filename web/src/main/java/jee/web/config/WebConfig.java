@@ -1,4 +1,4 @@
-package java.web.config;
+package jee.web.config;
 
 import com.shieldsolutions.velocity.view.VelocityConfigurer;
 import com.shieldsolutions.velocity.view.VelocityViewResolver;
@@ -11,12 +11,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = "java.web.controller")
+@ComponentScan(basePackages = "jee.web.controller")
 public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/webjars/**").addResourceLocations("/webjars/");
+        //registry.addResourceHandler("/resources/**").addResourceLocations("/resources/css/");
     }
 
     @Bean

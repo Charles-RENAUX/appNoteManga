@@ -1,4 +1,4 @@
-package java.core.entity;
+package jee.core.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -11,10 +11,10 @@ public class User extends GenericEntity {
     private String adress;
     private String pseudo;
     private String password;
-    private Boolean admin;
+    private Boolean adminn;
 
-    @ManyToMany(mappedBy = "user")
-    private List<Collection> collectionList;
+    //@ManyToMany(mappedBy = "user")
+    //private List<Collection> collectionList;
 
     public User(String name, String firstname, String adress, String pseudo, String password) {
         this.name = name;
@@ -22,11 +22,11 @@ public class User extends GenericEntity {
         this.adress = adress;
         this.pseudo = pseudo;
         this.password = password;
-        this.admin = false;
+        this.adminn = false;
     }
 
     public User() {
-        this.admin = false;
+        this.adminn = false;
     }
 
     public String getName() {
@@ -70,18 +70,18 @@ public class User extends GenericEntity {
     }
 
     public Boolean getAdmin() {
-        return admin;
+        return adminn;
     }
 
     public void setAdmin(Boolean admin) {
-        this.admin = admin;
+        this.adminn = admin;
     }
 
-    public List<Collection> getCollectionList() {
+    /*public List<Collection> getCollectionList() {
         return collectionList;
     }
 
     public void setCollectionList(List<Collection> collectionList) {
         this.collectionList = collectionList;
-    }
+    }*/
 }

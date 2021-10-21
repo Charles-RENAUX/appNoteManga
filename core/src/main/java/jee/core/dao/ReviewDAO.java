@@ -1,8 +1,7 @@
-package java.core.dao;
+package jee.core.dao;
 
+import jee.core.entity.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.core.entity.Review;
 
 public interface ReviewDAO extends JpaRepository<Review,Long> {
 }
