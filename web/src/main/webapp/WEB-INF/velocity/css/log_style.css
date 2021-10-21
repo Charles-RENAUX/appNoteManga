@@ -70,8 +70,9 @@ input#connexion
 
 a
 {
-    color: red;
+    color: white;
     text-decoration: none;
+    background-color: rgba(60,60,60,0.60);
     width: 25%;
     position: relative;
     left: 30%;
@@ -79,8 +80,9 @@ a
 
 a#retour
 {
-    color: red;
+    color: white;
     text-decoration: none;
+    background-color: rgba(60,60,60,0.60);
     position: absolute;
     bottom: 0px;
     left:0px;
