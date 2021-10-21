@@ -70,7 +70,7 @@ input#connexion
 
 a
 {
-    color: black;
+    color: red;
     text-decoration: none;
     width: 25%;
     position: relative;
@@ -79,7 +79,7 @@ a
 
 a#retour
 {
-    color: white;
+    color: red;
     text-decoration: none;
     position: absolute;
     bottom: 0px;
