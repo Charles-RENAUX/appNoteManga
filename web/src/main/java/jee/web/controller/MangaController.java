@@ -28,7 +28,6 @@ public class MangaController {
     @GetMapping("/welcome")
     private String getListNewMangas(ModelMap map) {
         map.addAttribute("listNewManga", mangaService.getNewMangas());
-        System.out.println("Size: "+mangaService.getNewMangas().size());
         return "newMangaPage";
     }
 
@@ -40,8 +39,9 @@ public class MangaController {
 
     @GetMapping("/reviewPage/{id}")
     private String getReviewManga(ModelMap map, @PathVariable("id") long id) {
-        map.addAttribute("listExploreManga", mangaService.getManga(id));
-        return "redirect:reviewMangaPage";
+        map.addAttribute("manga", mangaService.getManga(id));
+        System.out.println("REVIEW MANGA GET: "+mangaService.getManga(id).getName());
+        return "reviewMangaPage";
     }
 
 }
