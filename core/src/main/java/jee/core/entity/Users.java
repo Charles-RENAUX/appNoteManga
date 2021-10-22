@@ -8,21 +8,16 @@ import java.util.List;
 public class Users extends GenericEntity {
     private String name;
     private String firstname;
-    private String adress;
     private String pseudo;
     private String password;
     private Boolean adminn;
 
-    //@ManyToMany(mappedBy = "User")
-    //private List<Collection> collectionList;
-
-    public Users(String name, String firstname, String adress, String pseudo, String password) {
+    public Users(String name, String firstname, String pseudo, String password, boolean adminn) {
         this.name = name;
         this.firstname = firstname;
-        this.adress = adress;
         this.pseudo = pseudo;
         this.password = password;
-        this.adminn = false;
+        this.adminn = adminn;
     }
 
     public Users() {
@@ -43,14 +38,6 @@ public class Users extends GenericEntity {
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
-    }
-
-    public String getAdress() {
-        return adress;
-    }
-
-    public void setAdress(String adress) {
-        this.adress = adress;
     }
 
     public String getPseudo() {

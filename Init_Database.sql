@@ -16,10 +16,8 @@ CREATE TABLE `users`
     updateDate   DATE DEFAULT CURDATE(),
     name         VARCHAR(20)     NOT NULL,
     firstname    VARCHAR(20)     NOT NULL,
-    adress       VARCHAR(100),
     pseudo       VARCHAR(20)     NOT NULL,
     password     VARCHAR(20)     NOT NULL,
-    age          INT,
     adminn        BOOLEAN         NOT NULL
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
