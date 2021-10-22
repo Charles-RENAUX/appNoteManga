@@ -14,23 +14,15 @@ import java.util.List;
 public class Manga extends GenericEntity{
 
     private String name;
-    private String editor;
     private String resume;
     private Float note;
     private String image;
 
-    @ElementCollection
-    private List<String> chapterList;
-
     @OneToMany(targetEntity = Review.class, mappedBy="manga")
     private List<Review> reviewList;
 
-    //@ManyToMany(mappedBy = "manga")
-    //private List<Collection> collectionList;
-
-    public Manga(String name, String editor, String resume) {
+    public Manga(String name, String resume) {
         this.name = name;
-        this.editor = editor;
         this.resume = resume;
     }
 
@@ -43,14 +35,6 @@ public class Manga extends GenericEntity{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getEditor() {
-        return editor;
-    }
-
-    public void setEditor(String editor) {
-        this.editor = editor;
     }
 
     public String getResume() {
@@ -84,14 +68,6 @@ public class Manga extends GenericEntity{
         this.image = image;
     }
 
-    public List<String> getChapterList() {
-        return chapterList;
-    }
-
-    public void setChapterList(List<String> chapterList) {
-        this.chapterList = chapterList;
-    }
-
     public List<Review> getReviewList() {
         return reviewList;
     }
@@ -100,11 +76,4 @@ public class Manga extends GenericEntity{
         this.reviewList = reviewList;
     }
 
-    /*public List<Collection> getCollectionList() {
-        return collectionList;
-    }
-
-    public void setCollectionList(List<Collection> collectionList) {
-        this.collectionList = collectionList;
-    }*/
 }

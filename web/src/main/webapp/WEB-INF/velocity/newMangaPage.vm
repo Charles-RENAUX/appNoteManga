@@ -31,9 +31,9 @@
 </div>
 <div class="listMangaHolder" style="visibility: visible">
     <h3 class="newTitle">Nouveaut&eacute;s</h3>
-    <ul>
+    <>
         #foreach($manga in $listNewManga)
-            <a type="image" href="localhost:8080/reviewPage/"+$manga.Id class="mangaImageNew" src=$manga.Image alt=$manga.Name>
+            <input type="image" href="localhost:8080/reviewPage/"+$manga.Id class="mangaImageNew" src=$manga.Image alt=$manga.Name />
         #end
     </ul>
 </div>

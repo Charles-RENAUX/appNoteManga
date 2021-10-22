@@ -28,12 +28,8 @@ public class MangaController {
     @GetMapping("/welcome")
     private String getListNewMangas(ModelMap map) {
         map.addAttribute("listNewManga", mangaService.getNewMangas());
+        System.out.println("Size: "+mangaService.getNewMangas().size());
         return "newMangaPage";
-    }
-
-    @GetMapping("/toExplore")
-    private String redirectExplore(ModelMap map){
-        return "redirect:/explore";
     }
 
     @GetMapping("/explore")

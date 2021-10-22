@@ -6,17 +6,18 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Review extends GenericEntity{
     private String text;
-    private long autorId;
     private Integer note;
-    private Long likee;
-    private Long dislike;
+
+    @ManyToOne
+    private Users user;
 
     @ManyToOne
     private Manga manga;
 
-    public Review(String text, long autorId) {
+    public Review(String text, long authorId, Manga manga, Users user) {
         this.text = text;
-        this.autorId = autorId;
+        this.user  = user;
+        this.manga = manga;
     }
 
     public Review() {
@@ -30,30 +31,12 @@ public class Review extends GenericEntity{
         this.text = text;
     }
 
-
-
     public Integer getNote() {
         return note;
     }
 
     public void setNote(Integer note) {
         this.note = note;
-    }
-
-    public Long getLike() {
-        return likee;
-    }
-
-    public void setLike(Long like) {
-        this.likee = like;
-    }
-
-    public Long getDislike() {
-        return dislike;
-    }
-
-    public void setDislike(Long dislike) {
-        this.dislike = dislike;
     }
 
     public Manga getManga() {
@@ -64,11 +47,11 @@ public class Review extends GenericEntity{
         this.manga = manga;
     }
 
-    public long getAutorId() {
-        return autorId;
+    public Users getUser() {
+        return user;
     }
 
-    public void setAutorId(long autorId) {
-        this.autorId = autorId;
+    public void setUser(Users user) {
+        this.user = user;
     }
 }

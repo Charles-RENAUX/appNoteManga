@@ -25,7 +25,7 @@ public class ReviewService {
     public List<Review> getAllReviewForUser(long id){
         List<Review> res =  new ArrayList<Review>();
         for (Review review : reviewDAO.findAll()){
-            if (review.getAutorId()==id){
+            if (review.getUser().getId()==id){
                 res.add(review);
             }
         }

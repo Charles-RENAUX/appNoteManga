@@ -5,7 +5,7 @@ import javax.persistence.ManyToMany;
 import java.util.List;
 
 @Entity
-public class User extends GenericEntity {
+public class Users extends GenericEntity {
     private String name;
     private String firstname;
     private String adress;
@@ -13,10 +13,10 @@ public class User extends GenericEntity {
     private String password;
     private Boolean adminn;
 
-    //@ManyToMany(mappedBy = "user")
+    //@ManyToMany(mappedBy = "User")
     //private List<Collection> collectionList;
 
-    public User(String name, String firstname, String adress, String pseudo, String password) {
+    public Users(String name, String firstname, String adress, String pseudo, String password) {
         this.name = name;
         this.firstname = firstname;
         this.adress = adress;
@@ -25,7 +25,7 @@ public class User extends GenericEntity {
         this.adminn = false;
     }
 
-    public User() {
+    public Users() {
         this.adminn = false;
     }
 
@@ -77,11 +77,4 @@ public class User extends GenericEntity {
         this.adminn = admin;
     }
 
-    /*public List<Collection> getCollectionList() {
-        return collectionList;
-    }
-
-    public void setCollectionList(List<Collection> collectionList) {
-        this.collectionList = collectionList;
-    }*/
 }

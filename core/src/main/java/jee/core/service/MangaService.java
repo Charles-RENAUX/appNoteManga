@@ -41,6 +41,8 @@ public class MangaService {
 
     public List<Manga> getNewMangas(){
         List<Manga> all = mangaDAO.findAll();
+        for (Manga manga : all)
+            System.out.println("FOund: "+manga.getName());
         if (all.size()<=6){
             return all;
         }else {
