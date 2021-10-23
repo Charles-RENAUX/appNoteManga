@@ -66,23 +66,23 @@
                             <image id = "starMark5" class="startMark" src=$emptyStar></image>
                         #else
                             #if($manga.Note>=1.5 && $manga.Note<2)
-                                <image id = "starMark2" class="startMark" src=$halfStar></image>
                                 <image id = "starMark1" class="startMark" src=$fullStar></image>
+                                <image id = "starMark2" class="startMark" src=$halfStar></image>
                                 <image id = "starMark3" class="startMark" src=$emptyStar></image>
                                 <image id = "starMark4" class="startMark" src=$emptyStar></image>
                                 <image id = "starMark5" class="startMark" src=$emptyStar></image>
                             #else
                                 #if($manga.Note>=2 && $manga.Note<2.5)
-                                    <image id = "starMark2" class="startMark" src=$fullStar></image>
                                     <image id = "starMark1" class="startMark" src=$fullStar></image>
+                                    <image id = "starMark2" class="startMark" src=$fullStar></image>
                                     <image id = "starMark3" class="startMark" src=$emptyStar></image>
                                     <image id = "starMark4" class="startMark" src=$emptyStar></image>
                                     <image id = "starMark5" class="startMark" src=$emptyStar></image>
                                 #else
                                     #if($manga.Note>=2.5 && $manga.Note<3)
-                                        <image id = "starMark3" class="startMark" src=$halfStar></image>
                                         <image id = "starMark1" class="startMark" src=$fullStar></image>
                                         <image id = "starMark2" class="startMark" src=$fullStar></image>
+                                        <image id = "starMark3" class="startMark" src=$halfStar></image>
                                         <image id = "starMark4" class="startMark" src=$emptyStar></image>
                                         <image id = "starMark5" class="startMark" src=$emptyStar></image>
                                     #else
@@ -94,10 +94,10 @@
                                             <image id = "starMark5" class="startMark" src=$emptyStar></image>
                                         #else
                                             #if($manga.Note>=3.5 && $manga.Note<4)
-                                                <image id = "starMark4" class="startMark" src=$halfStar></image>
                                                 <image id = "starMark3" class="startMark" src=$fullStar></image>
                                                 <image id = "starMark1" class="startMark" src=$fullStar></image>
                                                 <image id = "starMark2" class="startMark" src=$fullStar></image>
+                                                <image id = "starMark4" class="startMark" src=$halfStar></image>
                                                 <image id = "starMark5" class="startMark" src=$emptyStar></image>
                                             #else
                                                 #if($manga.Note>=4 && $manga.Note<4.5)
@@ -108,11 +108,11 @@
                                                     <image id = "starMark5" class="startMark" src=$emptyStar></image>
                                                 #else
                                                     #if($manga.Note>=4.5&& $manga.Note<5)
-                                                        <image id = "starMark5" class="startMark" src=$halfStar></image>
                                                         <image id = "starMark4" class="startMark" src=$fullStar></image>
                                                         <image id = "starMark3" class="startMark" src=$fullStar></image>
                                                         <image id = "starMark1" class="startMark" src=$fullStar></image>
                                                         <image id = "starMark2" class="startMark" src=$fullStar></image>
+                                                        <image id = "starMark5" class="startMark" src=$halfStar></image>
                                                     #else
                                                         #if($manga.Note>=5)
                                                             <image id = "starMark5" class="startMark" src=$fullStar></image>

@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    #set($min=0)
+    #set($max=5)
     <meta charset="UTF-8">
+    <dynamic-attributes>true</dynamic-attributes>
     <title>Nouveaux mangas</title>
     <header>
         <input id="settingsButtonShow" class="settingsMainButton" type="image" src="https://static.qoqa.ch/pictogram/media/files/000/000/214/png_negative/icon-hl-mecanic.png" size="0" />
@@ -19,6 +22,16 @@
         function goToPage(url){
             window.location.replace(url);
         }
+        function checkNote() {
+            var val = parseInt(document.getElementById("note").value);
+            var span = document.getElementById("alert");
+            if (val > 0 || val < 5) {
+
+                span.text("value must be between 0 and 5");
+            }else{
+                span.text("");
+            }
+        };
     </script>
 </head>
 <body>
@@ -36,7 +49,8 @@
     <form action="form" method="POST">
         <div class="formAddReviewContainer">
             <label class = "addReviewElement" for="note">Note /5: </label>
-            #springFormInput("review.note" "class = 'addReviewElement' id='note' min='0' max='5' nKeyDown='if(this.value.length==1) return false;' required")
+            #springFormInput("review.note" " class = 'addReviewElement' id='note' min=$min max=$max onBlur=checkNote()  required")
+            <p class = 'addReviewElement' id="alert"></p>
             <label for="text">Contenus: </label>
             #springFormInput("review.text" "class = 'addReviewElement' id='text' required")
         </div>
