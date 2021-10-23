@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page de connexion</title>
+    <META charset="utf-8">
+    <style type="text/css">
+            #include("css/log_style.css")
+</head>
+
+<body>
+<section id="main">
+    <h1>Connexion</h1>
+    <form>
+        <h3>Pseudo</h3>
+        <input id="boite" type="text" name="pseudo" /><br />
+        <h3>Mot de passe</h3>
+        <input id="boite" type="password" name="password" /><br />
+        <input id="connexion" type="submit" value="Connexion"/>
+    </form>
+</section>
+
+<div>
+    <a href="Page_d_inscription">Pas encore inscrit ? Cliquez ici</a>
+</div>
+
+<div id="retour">
+    <a id="retour" href="localhost:8080/welcome"> &#8592 Retour à la page d'accueil </a>
+</div>
+</body>
+</html>

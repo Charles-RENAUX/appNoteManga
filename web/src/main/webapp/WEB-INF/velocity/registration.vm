@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page d'inscription</title>
+    <META charset="utf-8">
+    <style type="text/css">
+            #include("css/log_style.css")
+</head>
+
+<body>
+<section id="main">
+    <h1>Inscription</h1>
+    <form action="form" method="POST">
+        <div class ="form_group">
+            <label for ="name">Nom</label>
+            #springFormInput("user.name"  "id='boite' placeholder='name'")
+            <br />
+        </div>
+
+        <div class ="form_group">
+            <label for ="firstname">Prénom</label>
+            #springFormInput("user.firstname"  "id='boite' placeholder='firstname'")
+            <br />
+        </div>
+
+        <div class ="form_group">
+            <label for ="adress">Email</label>
+            #springFormInput("user.adress"  "id='boite' placeholder='adress'")
+            <br />
+        </div>
+
+        <div class ="form_group">
+            <label for ="pseudo">Pseudo</label>
+            #springFormInput("user.pseudo"  "id='boite' placeholder='pseudo'")
+            <br />
+        </div>
+
+        <div class ="form_group">
+            <label for ="password">Mot de passe</label>
+            #springFormInput("user.password"  "id='boite' placeholder='password'")
+            <br />
+        </div>
+
+        <input id="connexion" type="submit" value="Inscription"/>
+    </form>
+</section>
+
+<div>
+    <a href="Page_de_connexion">Déjà inscrit ? Cliquez ici</a>
+</div>
+
+<div id="retour">
+    <a id="retour" href=localhost:8080/welcome> &#8592 Retour à la page d'accueil </a>
+</div>
+</body>
+
+</html>
