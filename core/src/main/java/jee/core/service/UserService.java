@@ -56,4 +56,8 @@ public class UserService {
                 .orElse(null);
         return user;
     }
+
+    public void addUser(Users user){
+        userDAO.save(user);
+    }
 }
