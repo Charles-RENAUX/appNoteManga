@@ -18,7 +18,7 @@ CREATE TABLE `users`
     firstname    VARCHAR(20)     NOT NULL,
     pseudo       VARCHAR(20)     NOT NULL,
     password     VARCHAR(20)     NOT NULL,
-    adminn        BOOLEAN         NOT NULL
+    adminn        BOOLEAN         NOT NULL DEFAULT FALSE
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
@@ -41,9 +41,8 @@ CREATE TABLE `review`
     id           INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     creationDate DATE DEFAULT CURDATE(),
     updateDate   DATE DEFAULT CURDATE(),
-    review       VARCHAR(500),
-    autor        VARCHAR(20),
-    note         INT,
+    text       VARCHAR(500),
+    note         FLOAT DEFAULT 0.0,
     authorId INT,
     idManga INT,
     CONSTRAINT FK_users FOREIGN KEY (authorId)
@@ -51,6 +50,3 @@ CREATE TABLE `review`
     CONSTRAINT FK_manga FOREIGN KEY (idManga)
         REFERENCES manga(id)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-
-INSERT INTO users (name,firstname,pseudo,password,adminn) VALUES ('Compte', 'Admin','admin','admin', TRUE)

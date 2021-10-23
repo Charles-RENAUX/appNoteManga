@@ -24,3 +24,29 @@ INSERT INTO manga (name, resume, image) VALUES ('Air Gear',
 INSERT INTO manga (name, resume, image) VALUES ('Mob Psycho 100',
                                               'L''histoire suit Kageyama Shigeo, un élève de quatrième possédant des pouvoirs psychiques. Il peut plier et soulever n''importe quel objet avec son esprit.',
                                               'https://upload.wikimedia.org//wikipedia/en/4/4b/Mob_Psycho_100_manga_vol_1.jpg');
+
+INSERT INTO users (name,firstname,pseudo,password,adminn) VALUES ('Compte', 'Admin','admin','admin', TRUE);
+INSERT INTO users (name,firstname,pseudo,password,adminn) VALUES ('sanchez', 'pierre','mado','mdp1', FALSE );
+INSERT INTO users (name,firstname,pseudo,password,adminn) VALUES ('renaux', 'charles','charles','mdp2', FALSE);
+INSERT INTO users (name,firstname,pseudo,password,adminn) VALUES ('les', 'rageux','ldr','ldr', FALSE);
+
+INSERT INTO review (text,note,authorId,idManga) VALUES ('A la conquête du Tropaion! Le roller c''est bien, le roller qui vole c''est mieux. A consommer  sans modération',
+                                                        5,2 ,7);
+INSERT INTO review (text,note,authorId,idManga) VALUES ('Nulle, qui va me rendre les précieuses minutes de ma vie que j''ai perdu à lire ça!' ,
+                                                        1,4 ,7);
+INSERT INTO review (text,note,authorId,idManga) VALUES ('Un classique. Je recommande',
+                                                        4.5,2 ,2);
+INSERT INTO review (text,note,authorId,idManga) VALUES ('Le manga a déjà fait ses preuves, si vous ne connaissez pas, sortez de votre grotte!',
+                                                        4,3 ,2);
+INSERT INTO review (text,note,authorId,idManga) VALUES ('C''est moyen, le concept de pirate est éclaté. Certains devraient retourner à l''école',
+                                                        2,4 ,2);
+INSERT INTO review (text,note,authorId,idManga) VALUES ('Pour les jeunes, c''est Boruto mais en mieux' ,
+                                                        5,2 ,1);
+INSERT INTO review (text,note,authorId,idManga) VALUES ('J''ai pas spécialement accroché au concept de ninja, mais ça reste sympa à lire',
+                                                        3,3 ,1);
+INSERT INTO review (text,note,authorId,idManga) VALUES ('Pas spécialement fan, mais je comprend que ça plaise. C''est un classique shonen',
+                                                        3,2 ,3);
+INSERT INTO review (text,note,authorId,idManga) VALUES ('Je suis neutre. Les voies du seigneur sont impénétrables',
+                                                        2.5,1 ,3);
+INSERT INTO review (text,note,authorId,idManga) VALUES ('Pas fou. Vu la couverture médiatique je m''attendais à mieux',
+                                                        2,4 ,3);
