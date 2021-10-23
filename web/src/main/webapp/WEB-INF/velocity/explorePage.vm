@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Page Manga</title>
+    <title>Exploration</title>
     <header>
         <input id="settingsButtonShow" class="settingsMainButton" type="image" src="https://static.qoqa.ch/pictogram/media/files/000/000/214/png_negative/icon-hl-mecanic.png" size="0" />
         <input class="logInMainButton" type="image" src="https://icon-library.com/images/icon-login/icon-login-4.jpg" size="0" />
@@ -16,6 +16,9 @@
                 show.style.visibility="visible"
             }
         };
+        function goToPage(url){
+            window.location.replace(url);
+        }
     </script>
 </head>
 <body>
@@ -25,14 +28,14 @@
     <div class="settingsMenuToShow" id="visibilitySettings" style="visibility: hidden">
         <div class="divTriangle"></div>
         <div class="settingsMainMenu">
-            <a class="textButton" href="localhost:8080/explore">Explorer</a>
+            <a class="textButton" href="http://localhost:8080/explore">Explorer</a>
             <a class="textButton">A propos</a>
         </div>
     </div>
     <div class="listMangaHolder" style="visibility: visible">
         <ul>
             #foreach($manga in $listExploreManga)
-                <input type="image" class="mangaCoverExplore" href="localhost:8080/reviewPage/"+$manga.Id src=$manga.Image alt=$manga.Name>
+                <input type="image" class="mangaCoverExplore" onclick=goToPage("http://localhost:8080/reviewPage/"+$manga.Id) src=$manga.Image alt=$manga.Name>
             #end
         </ul>
     </div>
