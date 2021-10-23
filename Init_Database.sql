@@ -31,7 +31,7 @@ CREATE TABLE `manga`
     updateDate   DATE DEFAULT CURDATE(),
     name         VARCHAR(100)    NOT NULL,
     resume VARCHAR(800),
-    note         INT,
+    note         INT DEFAULT 0,
     image VARCHAR (200)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
