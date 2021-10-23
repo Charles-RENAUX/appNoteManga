@@ -51,6 +51,9 @@ public class UserService {
     }
 
     public Users findUser(long userId){
-        return userDAO.getById(userId);
+        Users user = userDAO.findAll().stream().filter(users -> userId==users.getId())
+                .findAny()
+                .orElse(null);
+        return user;
     }
 }

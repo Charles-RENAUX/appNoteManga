@@ -96,6 +96,12 @@ div.settingsMainMenu{
     height: 7%;
 }
 
+.addIcon{
+    width: 7%;
+    height: 7%;
+    margin-left: 21%;
+}
+
 .mangaInfosReview{
     display: flex;
 }
@@ -125,5 +131,22 @@ div.settingsMainMenu{
     padding: 0.5%;
     margin: 0.3%;
     background-color: ghostwhite;
+}
+
+.formAddReview{
+    margin: 5%;
+    padding: 2%;
+
+    border-style: solid;
+    background-color: ghostwhite;
+}
+
+.formAddReviewContainer{
+    padding: 1%;
+}
+
+.addReviewElement{
+    display: flex;
+    padding: 1%;
 }
 

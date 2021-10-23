@@ -51,6 +51,7 @@ public class MangaController {
         manga.setNote();
         System.out.println("Dans le controller: "+manga.getNote());
         map.addAttribute("manga", manga);
+        map.addAttribute("connected", true);
         return "reviewMangaPage";
     }
 

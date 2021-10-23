@@ -46,4 +46,8 @@ public class GenericEntity {
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }

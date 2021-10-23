@@ -19,6 +19,7 @@ public class ReviewService {
     }
 
     public void addReview(Review review){
+        review.setId(getLastId());
         reviewDAO.save(review);
     }
 
@@ -48,5 +49,14 @@ public class ReviewService {
 
     public void deleteReview(long id){
         reviewDAO.deleteById(id);
+    }
+
+    public long getLastId(){
+        long idMax = 1;
+        for(Review review : reviewDAO.findAll()){
+            if(review.getId()>idMax)
+                idMax=review.getId();
+        }
+        return idMax;
     }
 }
