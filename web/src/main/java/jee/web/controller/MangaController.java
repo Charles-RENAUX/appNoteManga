@@ -1,5 +1,9 @@
 package jee.web.controller;
 
+import jee.core.dao.ReviewDAO;
+import jee.core.entity.Manga;
+import jee.core.entity.Review;
+import jee.core.service.ReviewService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,14 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jee.core.dao.MangaDAO;
 import jee.core.service.MangaService;
 
-@Controller
+import javax.transaction.Transactional;
+import java.util.List;
 
+@Controller
+@Transactional
 public class MangaController {
 
     private MangaService mangaService;
 
     public MangaController(final MangaDAO mangaDAO) {
         this.mangaService = new MangaService(mangaDAO);
+
     }
 
     @GetMapping("/")
@@ -39,8 +47,10 @@ public class MangaController {
 
     @GetMapping("/reviewPage/{id}")
     private String getReviewManga(ModelMap map, @PathVariable("id") long id) {
-        map.addAttribute("manga", mangaService.getManga(id));
-        System.out.println("REVIEW MANGA GET: "+mangaService.getManga(id).getName());
+        Manga manga = mangaService.getManga(id);
+        manga.setNote();
+        System.out.println("Dans le controller: "+manga.getNote());
+        map.addAttribute("manga", manga);
         return "reviewMangaPage";
     }
 

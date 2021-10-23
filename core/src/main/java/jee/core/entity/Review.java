@@ -1,6 +1,8 @@
 package jee.core.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -11,7 +13,8 @@ public class Review extends GenericEntity{
     @ManyToOne
     private Users user;
 
-    @ManyToOne
+    @ManyToOne(fetch= FetchType.EAGER)
+    @JoinColumn(name="idManga", nullable=false)
     private Manga manga;
 
     public Review(String text, long authorId, Manga manga, Users user) {

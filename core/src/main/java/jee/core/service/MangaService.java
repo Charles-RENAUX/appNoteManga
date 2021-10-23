@@ -1,5 +1,7 @@
 package jee.core.service;
 
+import jee.core.dao.ReviewDAO;
+import jee.core.entity.Review;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +30,10 @@ public class MangaService {
     }
 
     public Manga getManga(long id){
-        return mangaDAO.getOne(id);
+        Manga manga = mangaDAO.findAll().stream().filter(mangas -> id==mangas.getId())
+                .findAny()
+                .orElse(null);
+        return manga;
     }
 
     public void addManga(Manga manga){

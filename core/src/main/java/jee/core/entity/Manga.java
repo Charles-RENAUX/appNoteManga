@@ -2,11 +2,8 @@ package jee.core.entity;
 
 
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import java.util.List;
 
 
@@ -18,7 +15,7 @@ public class Manga extends GenericEntity{
     private Float note;
     private String image;
 
-    @OneToMany(targetEntity = Review.class, mappedBy="manga")
+    @OneToMany(mappedBy="manga", fetch= FetchType.EAGER)
     private List<Review> reviewList;
 
     public Manga(String name, String resume) {
@@ -46,18 +43,22 @@ public class Manga extends GenericEntity{
     }
 
     public Float getNote() {
-        float _note = 0;
-        for (Review review : this.reviewList){
-            _note += review.getNote();
-        }
-        _note = _note/(this.reviewList.size());
-        if (this.note != _note)
-            this.note = _note;
+
         return this.note;
     }
 
-    public void setNote(Float note) {
-        this.note = note;
+    public void setNote() {
+        float _note = 0;
+        System.out.println("Calcule de la note");
+        for (Review review : this.reviewList){
+            System.out.println("Note: "+review.getNote());
+            _note += review.getNote();
+        }
+        System.out.println("note total: "+_note+" et la taille: "+this.reviewList.size());
+        _note = _note/(this.reviewList.size());
+        System.out.println("Resultat: "+_note);
+        if (this.note != _note)
+            this.note = _note;
     }
 
     public String getImage() {

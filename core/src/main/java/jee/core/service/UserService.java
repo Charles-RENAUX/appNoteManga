@@ -9,11 +9,13 @@ import jee.core.entity.Users;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Named;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Named
 @Service
+@Transactional
 public class UserService {
 
     private UserDAO userDAO;
