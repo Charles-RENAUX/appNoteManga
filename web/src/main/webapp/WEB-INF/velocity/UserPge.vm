@@ -9,15 +9,21 @@
       #include("css/tHt.css")
     </style>
 
+#if($user.adminn==false)
+    <div>
+        <h1> Profil utilisateur</h1>
+    </div>
+    <div>
+        <p> Nom : $user.name </p>
+        <p> Prénom : $user.prenom</p>
+        <p> Mail : $user.adress</p>
+    </div>
+#else
+    <div>
+        <h1> ------ADMIN MODE------</h1>
+    </div>
+#end
 
-<div>
-    <h1> Profil utilisateur</h1>
-</div>
-<div>
-    <p> Nom : $user.name </p>
-    <p> Prénom : $user.prenom</p>
-    <p> Mail : $user.adress</p>
-</div>
 
 
 
