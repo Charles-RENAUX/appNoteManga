@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<style type="text/css">
+      #include("css/tHt.css")
+    </style>
+
+
+<div>
+    <h1> Profil utilisateur</h1>
+</div>
+<div>
+    <p> Nom : $user.name </p>
+    <p> Prénom : $user.prenom</p>
+    <p> Mail : $user.adress</p>
+</div>
+
+
+
+</body>
+</html>

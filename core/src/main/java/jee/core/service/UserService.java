@@ -36,6 +36,16 @@ public class UserService {
         return false;
     }
 
+    public Users findUserByConnexion(String pseudo, String mdp){
+        List<Users> users = userDAO.findAll();
+        for(Users user : users){
+            if (user.getPseudo().equals(pseudo) && user.getPassword().equals(mdp)){
+                return user;
+            }
+        }
+        return null;
+    }
+
     public List<Manga> getUsersManga(long userId){
         List<Manga> res =  new ArrayList<Manga>();
         for (Review review : reviewDAO.findAll()){
@@ -46,8 +56,8 @@ public class UserService {
         return res;
     }
 
-    public void createUser(String name, String firstName, String pseudo, String password, boolean admin){
-        userDAO.save(new Users(name,firstName,pseudo,password,admin));
+    public void createUser(String name, String firstName, String pseudo, String password, String adress, boolean admin){
+        userDAO.save(new Users(name,firstName,pseudo,password,adress,admin));
     }
 
     public Users findUser(long userId){

@@ -64,7 +64,8 @@
 </head>
 
 
-
+#if($user.)
+#end
 <body>
 <section id="main">
     <h1>Connexion</h1>

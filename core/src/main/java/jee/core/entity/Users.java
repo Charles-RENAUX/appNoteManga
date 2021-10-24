@@ -10,18 +10,22 @@ public class Users extends GenericEntity {
     private String firstname;
     private String pseudo;
     private String password;
+    private String adress;
     private Boolean adminn;
 
-    public Users(String name, String firstname, String pseudo, String password, boolean adminn) {
+
+
+    public Users() {
+        this.adminn = false;
+    }
+
+    public Users(String name, String firstname, String pseudo, String password, String adress, Boolean adminn) {
         this.name = name;
         this.firstname = firstname;
         this.pseudo = pseudo;
         this.password = password;
+        this.adress = adress;
         this.adminn = adminn;
-    }
-
-    public Users() {
-        this.adminn = false;
     }
 
     public String getName() {
