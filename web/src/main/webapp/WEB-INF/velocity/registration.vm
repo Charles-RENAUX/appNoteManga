@@ -5,6 +5,7 @@
     <META charset="utf-8">
     <style type="text/css">
             #include("css/log_style.css")
+    </style>
 </head>
 
 <body>
@@ -46,7 +47,7 @@
 </section>
 
 <div>
-    <a href="Page_de_connexion">Déjà inscrit ? Cliquez ici</a>
+    <a href="locallhost:8080/try_Connexion">Déjà inscrit ? Cliquez ici</a>
 </div>
 
 <div id="retour">

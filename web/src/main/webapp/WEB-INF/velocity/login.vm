@@ -5,12 +5,70 @@
     <META charset="utf-8">
     <style type="text/css">
             #include("css/log_style.css")
+    </style>
+
+    <script>
+        const sampleForm = document.querySelector("sampleForm");
+        if (sampleForm){
+            sampleForm.addEventListener("submit",function (e){
+                submitForm(e,this)
+            })
+        }
+
+        async function submitForm(e, form){
+            e.preventDefault();
+            const jsonFormData = buildJsonFormData(form)
+            const header = buildHeader();
+            const response = await performPostHttpRequest('localhost:8080/users/try_Connexion', header, jsonFormData);
+            if (response){
+                // create session
+
+            }
+            else alert('An error occured');
+        }
+
+        function buildJsonFormData(form){
+            const jsonFormData = {};
+            for (const pair of new FormData(form)){
+                jsonFormData[pair[0]] = pair[1]
+            }
+            return jsonFormData
+        }
+
+        function buildHeader(authorization = null){
+            const headers = {
+                "Content-Type" : "application/json"
+            }
+        }
+
+        async function performPostHttpRequest(fetchLink,headers,body){
+            if(!fetchLink || !headers || !body) {
+                throw new Error("One or more POST request parameters was not passed.");
+            }
+            try {
+                const rawResponse = await fetch(fetchLink, {
+                    method: "POST",
+                    headers: headers,
+                    body: JSON.stringify(body)
+                });
+                const content = await rawResponse.json();
+                return content;
+            }
+            catch(err) {
+                console.error(`Error at fetch POST: ${err}`);
+                throw err;
+            }
+        }
+
+    </script>
 </head>
+
+
 
 <body>
 <section id="main">
     <h1>Connexion</h1>
-    <form>
+    <form id="sampleForm">
         <h3>Pseudo</h3>
         <input id="boite" type="text" name="pseudo" /><br />
         <h3>Mot de passe</h3>
@@ -20,7 +78,7 @@
 </section>
 
 <div>
-    <a href="Page_d_inscription">Pas encore inscrit ? Cliquez ici</a>
+    <a href="localhost:8080/addUser/form">Pas encore inscrit ? Cliquez ici</a>
 </div>
 
 <div id="retour">
