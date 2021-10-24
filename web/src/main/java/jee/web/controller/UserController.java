@@ -52,16 +52,23 @@ public class UserController{
         }
     }
 
-    @GetMapping("/User")
-    private String getUser(ModelMap map) {
-        try {
-            Users user = CurrentUser.getInstance().getUser();
-            System.out.println("Dans le controller: " + user);
-            map.addAttribute("user", user);
-            map.addAttribute("connected", true);
-            return "userPge";
-        }catch (Exception e){
-            return "login";
-        }
+    @GetMapping("/userPage/fill")
+    private String getUserPage(ModelMap map){
+        map.addAttribute("user", CurrentUser.getInstance().getUser());
+        return "UserPge";
+    }
+
+    @GetMapping("/logOff")
+    private String logOffCurrentUser(ModelMap map){
+        CurrentUser.getInstance().logOff();
+        return "redirect:/welcome";
+    }
+
+    @RequestMapping(value = "/userPage/form", method = RequestMethod.POST)
+    private String modifyUser(@ModelAttribute("user") Users user, ModelMap map){
+        Users users = userService.updateUser(user);
+        CurrentUser.getInstance().logOff();
+        CurrentUser.getInstance().setUser(users);
+        return "redirect:http://localhost:8080/userPage/fill";
     }
 }

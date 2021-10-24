@@ -70,4 +70,31 @@ public class UserService {
     public void addUser(Users user){
         userDAO.save(user);
     }
+
+    public boolean doesUserPseudoAlreadyExist(Users user){
+        if (userDAO.findAll().stream().filter(users -> user.getPseudo().equals(users.getPseudo()))
+                .findAny()
+                .orElse(null)==null){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public Users updateUser(Users user){
+        Users old = null;
+        for(Users userr : userDAO.findAll()){
+            if (user.getId()==userr.getId()){
+                old = userr;
+            }
+        }
+        userDAO.delete(old);
+        addUser(user);
+        for(Users userr : userDAO.findAll()){
+            if (user.getPseudo().equals(userr.getPseudo())){
+                return userr;
+            }
+        }
+        return null;
+    }
 }

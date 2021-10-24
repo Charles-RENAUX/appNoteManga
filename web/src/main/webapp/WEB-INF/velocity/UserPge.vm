@@ -3,28 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>User</title>
+    <header>
+    <input id="settingsButtonShow" class="settingsMainButton" type="image" src="https://static.qoqa.ch/pictogram/media/files/000/000/214/png_negative/icon-hl-mecanic.png" size="0" />
+    <h1>Bienvenue $user.Pseudo</h1>
+    <input onclick=goToPage("http://localhost:8080/logOff") class="logInMainButton" type="image" src="https://iconape.com/wp-content/png_logo_vector/login-29.png" size="0" />
+    </header>
+    <script>
+        document.getElementById('settingsButtonShow').onclick = function() {
+            var show = document.getElementById("visibilitySettings")
+            if(show.style.visibility=="visible"){
+                show.style.visibility="hidden"
+            }else{
+                show.style.visibility="visible"
+            }
+        };
+        function goToPage(url){
+            window.location.replace(url);
+        }
+    </script>
 </head>
 <body>
-<style type="text/css">
+    <style type="text/css">
       #include("css/tHt.css")
     </style>
-
-#if($user.Adminn==false)
     <div>
-        <h1> Profil utilisateur</h1>
+        <h1> Profil utilisateur:</h1>
     </div>
-    <div>
-        <p> Nom : $user.Name </p>
-        <p> Prénom : $user.Prenom</p>
-    </div>
-#else
-    <div>
-        <h1> ------ADMIN MODE------</h1>
-    </div>
-#end
-
-
-
-
+    <form>
+        <div>
+            #springFormInput("user.name"  "id='boite' placeholder='$user.name' required")
+            #springFormInput("user.firstname"  "id='boite' placeholder='$user.firstname' required")
+            #springFormInput("user.pseudo"  "id='boite' placeholder='$user.pseudo' required")
+            #springFormInput("user.password"  "id='boite' placeholder='$user.password' type='password' required")
+        </div>
+        <button type="submit">Valider les changements</button>
+    </form>
 </body>
 </html>

@@ -32,4 +32,8 @@ public class CurrentUser {
         else
             return true;
     }
+
+    public void logOff(){
+        user=null;
+    }
 }
