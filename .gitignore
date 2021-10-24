@@ -1,0 +1,9 @@
+*.idea
+.idea/
+core/target/
+web/target/
+.idea/misc.xml
+core/target/classes/java/core/config/
+core/target/classes/java/core/dao/
+core/target/classes/java/core/entity/
+core/target/classes/java/core/service/
