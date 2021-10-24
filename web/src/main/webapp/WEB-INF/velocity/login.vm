@@ -17,10 +17,16 @@
             if (response){
 
                 // create session
-                console.log("REPONSE")
+                if(response.status==403){
+                    window.alert("Pseudo ou mot de pass incorrect")
+                }else {
+                    console.log(response.url)
+                    goToPage(response.url)
+                }
+            }else{
+                console.log("FALSE")
+                console.log(response)
             }
-
-            else alert('An error occured');
         }
 
         function buildJsonFormData(form){
@@ -52,7 +58,7 @@
                     headers: headers,
                     body: JSON.stringify(body)
                 });
-                const content = await rawResponse.json();
+                const content = await rawResponse;
                 return content;
             }
             catch(err) {

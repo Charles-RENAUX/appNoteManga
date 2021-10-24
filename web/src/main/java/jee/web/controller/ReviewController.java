@@ -7,6 +7,7 @@ import jee.core.entity.Review;
 import jee.core.service.MangaService;
 import jee.core.service.ReviewService;
 import jee.core.service.UserService;
+import jee.web.utils.CurrentUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -27,23 +28,21 @@ public class ReviewController {
 
     }
 
-    @GetMapping("/addReview/{idManga}/{idUser}/fill")
-    private String getAddReviewPage(ModelMap map, @PathVariable("idManga") long idManga, @PathVariable("idUser") long idUser){
-        //test user co
-
+    @GetMapping("/addReview/{idManga}/fill")
+    private String getAddReviewPage(ModelMap map, @PathVariable("idManga") long idManga){
         map.addAttribute("manga", mangaService.getManga(idManga));
-        map.addAttribute("user", userService.findUser(idUser));
         map.addAttribute("review", new Review());
+        map.addAttribute("connected", CurrentUser.getInstance().isConnected());
+        if(CurrentUser.getInstance().isConnected()){
+            map.addAttribute("user",CurrentUser.getInstance().getUser());
+        }
         return "addReviewPage";
     }
 
-    @RequestMapping(value = "/addReview/{idManga}/{idUser}/form", method = RequestMethod.POST)
-    private String submitForm(@ModelAttribute("review") Review review, @PathVariable("idManga") long idManga, @PathVariable("idUser") long idUser){
-        //TEST USER CO
-
+    @RequestMapping(value = "/addReview/{idManga}/form", method = RequestMethod.POST)
+    private String submitForm(@ModelAttribute("review") Review review, @PathVariable("idManga") long idManga){
         review.setManga(mangaService.getManga(idManga));
-        review.setUser(userService.findUser(idUser));
-        System.out.println("ADDING REVIEW FOR ID: "+idUser+" with user found: "+review.getUser().getPseudo());
+        review.setUser(CurrentUser.getInstance().getUser());
         reviewService.addReview(review);
         return "redirect:http://localhost:8080/reviewPage/"+idManga;
     }

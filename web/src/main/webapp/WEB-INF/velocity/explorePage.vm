@@ -5,7 +5,12 @@
     <title>Exploration</title>
     <header>
         <input id="settingsButtonShow" class="settingsMainButton" type="image" src="https://static.qoqa.ch/pictogram/media/files/000/000/214/png_negative/icon-hl-mecanic.png" size="0" />
-        <input onclick=goToPage("http://localhost:8080/login") class="logInMainButton" type="image" src="https://icon-library.com/images/icon-login/icon-login-4.jpg" size="0" />
+        #if($connected==true)
+            <h1>Bienvenue $user.Pseudo</h1>
+            <input onclick=goToPage("http://localhost:8080/userPage") class="logInMainButton" type="image" src="https://icon-library.com/images/icon-login/icon-login-4.jpg" size="0" />
+        #else
+            <input onclick=goToPage("http://localhost:8080/login") class="logInMainButton" type="image" src="https://icon-library.com/images/registered-icon/registered-icon-24.jpg" size="0" />
+        #end
     </header>
     <script>
         document.getElementById('settingsButtonShow').onclick = function() {

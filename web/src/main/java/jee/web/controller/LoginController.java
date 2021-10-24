@@ -33,7 +33,7 @@ public class LoginController{
     @RequestMapping(value="/login/try", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public RedirectView userConnection(@RequestBody String body){
+    public void userConnection(@RequestBody String body, HttpServletResponse httpResponse) throws IOException {
 
         JSONObject bodyJson = new JSONObject(body);
 
@@ -43,10 +43,9 @@ public class LoginController{
             System.out.println("TRYING TO LOG: " + bodyJson.get("pseudo").toString() + " mdp: " + bodyJson.get("password").toString());
             CurrentUser.getInstance().setUser(user);
             System.out.println("CONNECTED");
+            httpResponse.sendRedirect("/welcome");
+        }else{
+            httpResponse.setStatus(403);
         }
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("http:/localhost:8080/welcome");
-
-        return redirectView;
     }
 }
