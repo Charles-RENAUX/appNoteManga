@@ -4,7 +4,6 @@
     #set($min=0)
     #set($max=5)
     <meta charset="UTF-8">
-    <dynamic-attributes>true</dynamic-attributes>
     <title>Nouveaux mangas</title>
     <header>
         <input id="settingsButtonShow" class="settingsMainButton" type="image" src="https://static.qoqa.ch/pictogram/media/files/000/000/214/png_negative/icon-hl-mecanic.png" size="0" />
