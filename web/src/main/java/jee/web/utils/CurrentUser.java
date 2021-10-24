@@ -3,7 +3,7 @@ package jee.web.utils;
 import jee.core.entity.Users;
 
 public class CurrentUser {
-    private Users user;
+    private static Users user;
     private static CurrentUser currentInstance;
 
     public CurrentUser(){
@@ -12,7 +12,8 @@ public class CurrentUser {
 
     public static CurrentUser getInstance(){
         if (currentInstance==null){
-            new CurrentUser();
+            currentInstance = new CurrentUser();
+            user = null;
         }
         return currentInstance;
     }
@@ -23,5 +24,12 @@ public class CurrentUser {
 
     public Users getUser(){
         return (this.user);
+    }
+
+    public boolean isConnected(){
+        if (user==null)
+            return false;
+        else
+            return true;
     }
 }

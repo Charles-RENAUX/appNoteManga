@@ -8,30 +8,27 @@
     </style>
 
     <script>
-        const sampleForm = document.querySelector("sampleForm");
-        if (sampleForm){
-            sampleForm.addEventListener("submit",function (e){
-                submitForm(e,this)
-            })
-        }
+        const sampleForm = document.getElementById("sampleForm");
 
-        async function submitForm(e, form){
-            e.preventDefault();
-            const jsonFormData = buildJsonFormData(form)
+        async function submitForm(){
+            const jsonFormData = buildJsonFormData(sampleForm)
             const header = buildHeader();
-            const response = await performPostHttpRequest('localhost:8080/users/try_Connexion', header, jsonFormData);
+            const response = await performPostHttpRequest('http://localhost:8080/login/try', header, jsonFormData);
             if (response){
-                // create session
 
+                // create session
+                console.log("REPONSE")
             }
+
             else alert('An error occured');
         }
 
         function buildJsonFormData(form){
             const jsonFormData = {};
-            for (const pair of new FormData(form)){
-                jsonFormData[pair[0]] = pair[1]
-            }
+
+            jsonFormData["pseudo"] = document.getElementsByClassName("pseudoIN")[0].value
+            jsonFormData["password"] = document.getElementsByClassName("passwordIN")[0].value
+
             return jsonFormData
         }
 
@@ -39,9 +36,13 @@
             const headers = {
                 "Content-Type" : "application/json"
             }
+            return headers
         }
 
         async function performPostHttpRequest(fetchLink,headers,body){
+            console.log(fetchLink)
+            console.log(headers)
+            console.log(body)
             if(!fetchLink || !headers || !body) {
                 throw new Error("One or more POST request parameters was not passed.");
             }
@@ -59,7 +60,9 @@
                 throw err;
             }
         }
-
+        function goToPage(url){
+            window.location.replace(url);
+        }
     </script>
 </head>
 
@@ -68,19 +71,19 @@
     <h1>Connexion</h1>
     <form id="sampleForm">
         <h3>Pseudo</h3>
-        <input id="boite" type="text" name="pseudo" /><br />
+        <input id="boite" type="text" name="pseudo" class="pseudoIN" /><br />
         <h3>Mot de passe</h3>
-        <input id="boite" type="password" name="password" /><br />
-        <input id="connexion" type="submit" value="Connexion"/>
+        <input id="boite" type="password" name="password" class="passwordIN"/><br />
+        <input id="connexion" type="button" onclick=submitForm() value="Connexion"/>
     </form>
 </section>
 
 <div>
-    <a href="localhost:8080/addUser/form">Pas encore inscrit ? Cliquez ici</a>
+    <a href="http://localhost:8080/user/registration/fill" >Pas encore inscrit ? Cliquez ici</a>
 </div>
 
 <div id="retour">
-    <a id="retour" href="localhost:8080/welcome"> &#8592 Retour à la page d'accueil </a>
+    <a id="retour" href="http://localhost:8080/welcome"> &#8592 Retour &agrave; la page d'accueil </a>
 </div>
 </body>
 </html>

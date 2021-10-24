@@ -9,14 +9,13 @@
       #include("css/tHt.css")
     </style>
 
-#if($user.adminn==false)
+#if($user.Adminn==false)
     <div>
         <h1> Profil utilisateur</h1>
     </div>
     <div>
-        <p> Nom : $user.name </p>
-        <p> Prénom : $user.prenom</p>
-        <p> Mail : $user.adress</p>
+        <p> Nom : $user.Name </p>
+        <p> Prénom : $user.Prenom</p>
     </div>
 #else
     <div>

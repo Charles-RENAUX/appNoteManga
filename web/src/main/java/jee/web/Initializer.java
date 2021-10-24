@@ -1,8 +1,6 @@
 package jee.web;
 
-import jee.web.config.WSConfig;
 import org.apache.cxf.transport.servlet.CXFServlet;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import jee.core.config.AppConfig;
@@ -27,8 +25,7 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
     protected Class<?>[] getRootConfigClasses() {
         Class<?>[] rootConfigClass = new Class<?>[]{
                 AppConfig.class,
-                DBConfig.class,
-                WSConfig.class
+                DBConfig.class
         };
         return rootConfigClass;
     }

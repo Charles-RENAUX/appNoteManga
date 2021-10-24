@@ -19,8 +19,7 @@ import java.util.Map;
 
 @Named
 @Controller
-@Path("/users")
-public class UserController implements RestController{
+public class UserController{
 
     private UserService userService;
 
@@ -28,32 +27,41 @@ public class UserController implements RestController{
         this.userService=userService;
     }
 
-    @POST
-    @Path("/users/try_Connection")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response.Status userConnection(@FormParam("pseudo")String pseudo, @FormParam("password")String password){
-
-        if (userService.canUserConnect(pseudo,password)) {
-            // set session
-            Users user = userService.findUserByConnexion(pseudo, password);
-            CurrentUser.getInstance().setUser(user);
-            return Response.Status.ACCEPTED;
-        }
-        else return Response.Status.BAD_REQUEST;
+    @GetMapping("/login")
+    public String getLoginPage(ModelMap map){
+        return "login";
     }
 
-    @RequestMapping(value = "/addUser/form", method = RequestMethod.POST)
-    private String submitForm(@ModelAttribute("user") Users user){
-        userService.addUser(user); ;
-        return "redirect:http://localhost:8080/welcome";
+    @GetMapping("/user/registration/fill")
+    private String openRegistration(ModelMap map){
+        map.addAttribute("user",new Users());
+        map.addAttribute("pseudoDouble", false);
+        return "registration";
+    }
+
+    @RequestMapping(value = "/user/registration/form", method = RequestMethod.POST)
+    private String submitForm(@ModelAttribute("user") Users user, ModelMap map){
+        if(userService.doesUserPseudoAlreadyExist(user)){
+            map.addAttribute("pseudoDouble", true);
+            return "redirect:http://localhost:8080/user/registration/fill";
+        }else
+        {
+            userService.addUser(user);
+            CurrentUser.getInstance().setUser(user);
+            return "redirect:http://localhost:8080/welcome";
+        }
     }
 
     @GetMapping("/User")
     private String getUser(ModelMap map) {
-        Users user = CurrentUser.getInstance().getUser();
-        System.out.println("Dans le controller: "+user);
-        map.addAttribute("user", user);
-        map.addAttribute("connected", true);
-        return "userPge";
+        try {
+            Users user = CurrentUser.getInstance().getUser();
+            System.out.println("Dans le controller: " + user);
+            map.addAttribute("user", user);
+            map.addAttribute("connected", true);
+            return "userPge";
+        }catch (Exception e){
+            return "login";
+        }
     }
 }

@@ -8,7 +8,7 @@
     <title>Nouveaux mangas</title>
     <header>
         <input id="settingsButtonShow" class="settingsMainButton" type="image" src="https://static.qoqa.ch/pictogram/media/files/000/000/214/png_negative/icon-hl-mecanic.png" size="0" />
-        <input class="logInMainButton" type="image" src="https://icon-library.com/images/icon-login/icon-login-4.jpg" size="0" />
+        <input onclick=goToPage("http://localhost:8080/login") class="logInMainButton" type="image" src="https://icon-library.com/images/icon-login/icon-login-4.jpg" size="0" />
     </header>
     <script>
         document.getElementById('settingsButtonShow').onclick = function() {

@@ -6,52 +6,41 @@
     <style type="text/css">
             #include("css/log_style.css")
     </style>
+    <script>
+        function successConnection() {
+            window.alert("Bravo, compte créé!");
+        }
+        function pseudoAlreadyExist() {
+            window.alert("Ce pseudo existe déjà");
+        }
+    </script>
 </head>
-
 <body>
 <section id="main">
     <h1>Inscription</h1>
     <form action="form" method="POST">
         <div class ="form_group">
-            <label for ="name">Nom</label>
-            #springFormInput("user.name"  "id='boite' placeholder='name'")
-            <br />
-        </div>
+            #springFormInput("user.name"  "id='boite' placeholder='name' required")
+            #springFormInput("user.firstname"  "id='boite' placeholder='firstname' required")
+            #springFormInput("user.pseudo"  "id='boite' placeholder='pseudo' required")
+            #springFormInput("user.password"  "id='boite' placeholder='password' type='password' required")
 
-        <div class ="form_group">
-            <label for ="firstname">Prénom</label>
-            #springFormInput("user.firstname"  "id='boite' placeholder='firstname'")
-            <br />
-        </div>
-
-        <div class ="form_group">
-            <label for ="adress">Email</label>
-            #springFormInput("user.adress"  "id='boite' placeholder='adress'")
-            <br />
-        </div>
-
-        <div class ="form_group">
-            <label for ="pseudo">Pseudo</label>
-            #springFormInput("user.pseudo"  "id='boite' placeholder='pseudo'")
-            <br />
-        </div>
-
-        <div class ="form_group">
-            <label for ="password">Mot de passe</label>
-            #springFormInput("user.password"  "id='boite' placeholder='password'")
-            <br />
         </div>
 
         <input id="connexion" type="submit" value="Inscription"/>
+        #if($pseudoDouble==true)
+            <h4 class="error">erreur, ce pseudo existe d&eacute;j&agrave;</h4>
+        #end
+
     </form>
 </section>
 
 <div>
-    <a href="locallhost:8080/try_Connexion">Déjà inscrit ? Cliquez ici</a>
+    <a href="http://localhost:8080/login">D&eacute;j&agrave; inscrit ? Cliquez ici</a>
 </div>
 
 <div id="retour">
-    <a id="retour" href=localhost:8080/welcome> &#8592 Retour à la page d'accueil </a>
+    <a id="retour" href=http://localhost:8080/welcome> &#8592 Retour &agrave; la page d'accueil> </a>
 </div>
 </body>
 
