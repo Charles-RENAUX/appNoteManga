@@ -26,15 +26,27 @@
     <style type="text/css">
       #include("css/tHt.css")
     </style>
+    <div class="settingsMenuToShow" id="visibilitySettings" style="visibility: hidden">
+        <div class="divTriangle"></div>
+        <div class="settingsMainMenu">
+            <a class="textButton" href="http://localhost:8080/welcome">Nouveaux</a>
+            <a class="textButton" href="http://localhost:8080/explore">Explorer</a>
+            <a class="textButton">A propos</a>
+        </div>
+    </div>
     <div>
         <h1> Profil utilisateur:</h1>
     </div>
     <form action="form" method="POST">
         <div>
-            #springFormInput("user.name"  "id='boite' placeholder='$user.name' required")
-            #springFormInput("user.firstname"  "id='boite' placeholder='$user.firstname' required")
-            #springFormInput("user.pseudo"  "id='boite' placeholder='$user.pseudo' required")
-            #springFormInput("user.password"  "id='boite' placeholder='$user.password' type='password' required")
+            <label for="name" >Name: </label>
+            #springFormInput("user.name"  "id='name' placeholder='$user.name' class='modifUserForm' required")
+            <label for="fname">first name: </label>
+            #springFormInput("user.firstname"  "id='fname' placeholder='$user.firstname' class='modifUserForm' required")
+            <label for="pseudo">pseudo </label>
+            #springFormInput("user.pseudo"  "id='pseudo' placeholder='$user.pseudo' class='modifUserForm' required")
+            <label for="passwd">password: </label>
+            #springFormInput("user.password"  "id='passwd' placeholder='$user.password' type='password' class='modifUserForm' required")
         </div>
         <button type="submit">Valider les changements</button>
     </form>

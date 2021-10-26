@@ -45,6 +45,7 @@
 <div class="settingsMenuToShow" id="visibilitySettings" style="visibility: hidden">
     <div class="divTriangle"></div>
     <div class="settingsMainMenu">
+        <a class="textButton" href="http://localhost:8080/welcome">Nouveaux</a>
         <a class="textButton" href="http://localhost:8080/explore">Explorer</a>
         <a class="textButton">A propos</a>
     </div>
