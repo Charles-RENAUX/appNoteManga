@@ -50,7 +50,7 @@
                 $manga.Name
             </h4>
             <ul>
-                #if($manga.Note<=1.0)
+                #if($manga.Note<=0.5)
                     <image id = "starMark1" class="startMark" src=$emptyStar></image>
                     <image id = "starMark2" class="startMark" src=$emptyStar></image>
                     <image id = "starMark3" class="startMark" src=$emptyStar></image>
@@ -151,6 +151,11 @@
             #foreach($revieww in $manga.reviewList)
                 <p class="elementReview">
                     $revieww.text
+                    #if($connected==true)
+                        #if($user.Id==$revieww.getUserId())
+                            <input onclick=goToPage("http://localhost:8080/deleteReview/"+$revieww.Id+"/"+$revieww.getUserId()) class="deleteReviewForUser" type="image" src="https://www.pngplay.com/wp-content/uploads/7/Delete-Logo-Background-PNG-Image.png"></input>
+                        #end
+                    #end
                 </p>
             #end
         </ul>

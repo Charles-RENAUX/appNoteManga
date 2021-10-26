@@ -75,16 +75,17 @@
             </tr>
         </table>
         #end
-    #end
     <h1>Liste des mangas disponibles</h1>
-    <ul>
-        #foreach($manga in $listManga)
-            <li>
-                $manga.name
-            </li>
-            <input onclick=goToPage("http://localhost:8080/manga/update/"+$manga.Id+"/fill") class="adminMajManga" type="image" src="https://icons555.com/images/icons-black/image_icon_available_updates_pic_512x512.png" href="http://localhost:8080/"></input>
-            <input onclick=goToPage("http://localhost:8080/manga/delete/"+$manga.Id) class="adminMajManga" type="image" src="https://www.pngplay.com/wp-content/uploads/7/Delete-Logo-Background-PNG-Image.png" href="http://localhost:8080/"></input>
-        #end
-    </ul>
+        <ul>
+            #foreach($manga in $listManga)
+                <li>
+                    $manga.name
+                </li>
+                <input onclick=goToPage("http://localhost:8080/manga/update/"+$manga.Id+"/fill") class="adminMajManga" type="image" src="https://icons555.com/images/icons-black/image_icon_available_updates_pic_512x512.png" href="http://localhost:8080/"></input>
+                <input onclick=goToPage("http://localhost:8080/manga/delete/"+$manga.Id) class="adminMajManga" type="image" src="https://www.pngplay.com/wp-content/uploads/7/Delete-Logo-Background-PNG-Image.png" href="http://localhost:8080/"></input>
+            #end
+        </ul>
+    #end
+
 </body>
 </html>

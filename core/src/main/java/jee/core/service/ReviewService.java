@@ -59,4 +59,12 @@ public class ReviewService {
         }
         return idMax;
     }
+
+    public Review getReview(long id){
+        for (Review review : reviewDAO.findAll()){
+            if (review.getId()==id)
+                return review;
+        }
+        return new Review();
+    }
 }

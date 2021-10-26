@@ -57,9 +57,9 @@ public class MangaController {
     private String getReviewManga(ModelMap map, @PathVariable("id") long id) {
         Manga manga = mangaService.getManga(id);
         manga.setNote();
-        System.out.println("Dans le controller: "+manga.getNote());
         map.addAttribute("manga", manga);
         map.addAttribute("connected", CurrentUser.getInstance().isConnected());
+
         if(CurrentUser.getInstance().isConnected()){
             map.addAttribute("user",CurrentUser.getInstance().getUser());
         }

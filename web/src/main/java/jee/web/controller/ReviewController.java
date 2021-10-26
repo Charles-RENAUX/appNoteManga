@@ -25,7 +25,6 @@ public class ReviewController {
         this.reviewService = new ReviewService(reviewDAO);
         this.mangaService = new MangaService(mangaDAO);
         this.userService = new UserService(userDAO, reviewDAO);
-
     }
 
     @GetMapping("/addReview/{idManga}/fill")
@@ -51,6 +50,17 @@ public class ReviewController {
             review.setUser(CurrentUser.getInstance().getUser());
             reviewService.addReview(review);
             return "redirect:http://localhost:8080/reviewPage/" + idManga;
+        }else{
+            return "redirect:http://localhost:8080/welcome";
+        }
+    }
+
+    @GetMapping("/deleteReview/{idR}/{idU}")
+    private String deleteReview(@PathVariable("idR") long idR, @PathVariable("idU") long idU){
+        if(CurrentUser.getInstance().getUser().getId()==idU){
+            long idManga = reviewService.getReview(idR).getManga().getId();
+            reviewService.deleteReview(idR);
+            return "redirect:http://localhost:8080/reviewPage/"+idManga;
         }else{
             return "redirect:http://localhost:8080/welcome";
         }

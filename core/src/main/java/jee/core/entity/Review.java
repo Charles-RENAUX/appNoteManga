@@ -11,6 +11,7 @@ public class Review extends GenericEntity{
     private Integer note;
 
     @ManyToOne
+    @JoinColumn(name="authorId", nullable=false)
     private Users user;
 
     @ManyToOne(fetch= FetchType.EAGER)
@@ -56,5 +57,9 @@ public class Review extends GenericEntity{
 
     public void setUser(Users user) {
         this.user = user;
+    }
+
+    public long getUserId(){
+        return this.user.getId();
     }
 }

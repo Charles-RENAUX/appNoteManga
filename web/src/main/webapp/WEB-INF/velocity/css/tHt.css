@@ -183,6 +183,12 @@ input.modifUserForm{
     margin-bottom: 1%;
 }
 
+.deleteReviewForUser{
+    width: 2%;
+    height: 2%;
+    float: right;
+}
+
 .addMangaIn{
     display: flex;
     margin: 0.5%;
