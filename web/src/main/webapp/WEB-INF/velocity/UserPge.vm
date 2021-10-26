@@ -34,21 +34,47 @@
             <a class="textButton">A propos</a>
         </div>
     </div>
-    <div>
-        <h1> Profil utilisateur:</h1>
-    </div>
-    <form action="form" method="POST">
+    #if (!$user.Admin)
         <div>
-            <label for="name" >Name: </label>
-            #springFormInput("user.name"  "id='name' placeholder='$user.name' class='modifUserForm' required")
-            <label for="fname">first name: </label>
-            #springFormInput("user.firstname"  "id='fname' placeholder='$user.firstname' class='modifUserForm' required")
-            <label for="pseudo">pseudo </label>
-            #springFormInput("user.pseudo"  "id='pseudo' placeholder='$user.pseudo' class='modifUserForm' required")
-            <label for="passwd">password: </label>
-            #springFormInput("user.password"  "id='passwd' placeholder='$user.password' type='password' class='modifUserForm' required")
+            <h1> Profil utilisateur:</h1>
         </div>
-        <button type="submit">Valider les changements</button>
-    </form>
+        <form action="form" method="POST">
+            <div>
+                <label for="name" >Name: </label>
+                #springFormInput("user.name"  "id='name' placeholder='$user.name' class='modifUserForm' required")
+                <label for="fname">first name: </label>
+                #springFormInput("user.firstname"  "id='fname' placeholder='$user.firstname' class='modifUserForm' required")
+                <label for="pseudo">pseudo </label>
+                #springFormInput("user.pseudo"  "id='pseudo' placeholder='$user.pseudo' class='modifUserForm' required")
+                <label for="passwd">password: </label>
+                #springFormInput("user.password"  "id='passwd' placeholder='$user.password' type='password' class='modifUserForm' required")
+            </div>
+            <button type="submit">Valider les changements</button>
+        </form>
+    #end
+    #if ($user.Admin)
+        <h1>Liste des utilisateurs:</h1>
+    <table>
+        <tr>
+            <th>Pseudo:</th>
+            <th>Admin?</th>
+        </tr>
+    </table>
+        #foreach($uuser in $listUsers)
+            <table>
+            <tr>
+                #if ($uuser.Id!=$user.Id)
+                    <td>$uuser.Pseudo</td>
+                        #if($uuser.Admin)
+                            <td> <input onclick=goToPage("http://localhost:8080/permission/rmAdmin/"+$uuser.Id) class="rightCheck" type="image" src="https://cdn.pixabay.com/photo/2012/04/11/17/44/check-mark-29114_1280.png"/> </td>
+                        #end
+                        #if(!$uuser.Admin)
+                            <td> <input onclick=goToPage("http://localhost:8080/permission/addAdmin/"+$uuser.Id) class="checkMark" type="image" src="https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/brown_prodpictxmark_2_1484336303-1.png"/> </td>
+                        #end
+                    #end
+            </tr>
+        </table>
+        #end
+    #end
 </body>
 </html>

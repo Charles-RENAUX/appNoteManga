@@ -56,6 +56,9 @@ public class UserController{
     @GetMapping("/userPage/fill")
     private String getUserPage(ModelMap map){
         if(CurrentUser.getInstance().isConnected()) {
+            if(CurrentUser.getInstance().getUser().getAdmin() == true){
+                map.addAttribute("listUsers", userService.getAllUsers());
+            }
             map.addAttribute("user", CurrentUser.getInstance().getUser());
             return "UserPge";
         }else{
@@ -78,6 +81,32 @@ public class UserController{
             CurrentUser.getInstance().logOff();
             CurrentUser.getInstance().setUser(newU);
             return "redirect:http://localhost:8080/userPage/fill";
+        }else{
+            return "redirect:http://localhost:8080/welcome";
+        }
+    }
+
+    @GetMapping("/permission/addAdmin/{id}")
+    public String changeUserAdmin(@PathVariable("id") long userId){
+        if(CurrentUser.getInstance().getUser().getAdmin()){
+            Users toModif = userService.findUser(userId);
+            toModif.setAdmin(true);
+            userService.addUser(toModif);
+            return "redirect:http://localhost:8080/userPage/fill";
+
+        }else{
+            return "redirect:http://localhost:8080/welcome";
+        }
+    }
+
+    @GetMapping("/permission/rmAdmin/{id}")
+    public String changeUserNotAdmin(@PathVariable("id") long userId){
+        if(CurrentUser.getInstance().getUser().getAdmin()){
+            Users toModif = userService.findUser(userId);
+            toModif.setAdmin(false);
+            userService.addUser(toModif);
+            return "redirect:http://localhost:8080/userPage/fill";
+
         }else{
             return "redirect:http://localhost:8080/welcome";
         }
