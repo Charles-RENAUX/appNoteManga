@@ -55,8 +55,12 @@ public class UserController{
 
     @GetMapping("/userPage/fill")
     private String getUserPage(ModelMap map){
-        map.addAttribute("user", CurrentUser.getInstance().getUser());
-        return "UserPge";
+        if(CurrentUser.getInstance().isConnected()) {
+            map.addAttribute("user", CurrentUser.getInstance().getUser());
+            return "UserPge";
+        }else{
+            return "redirect:http://localhost:8080/welcome";
+        }
     }
 
     @GetMapping("/logOff")
@@ -67,11 +71,15 @@ public class UserController{
 
     @RequestMapping(value = "/userPage/form", method = RequestMethod.POST)
     private String modifyUser(@ModelAttribute("user") Users user, ModelMap map) throws InterruptedException {
-        user.setId(CurrentUser.getInstance().getUser().getId());
-        userService.addUser(user);
-        Users newU = userService.findUser(user.getId());
-        CurrentUser.getInstance().logOff();
-        CurrentUser.getInstance().setUser(newU);
-        return "redirect:http://localhost:8080/userPage/fill";
+        if(CurrentUser.getInstance().isConnected()) {
+            user.setId(CurrentUser.getInstance().getUser().getId());
+            userService.addUser(user);
+            Users newU = userService.findUser(user.getId());
+            CurrentUser.getInstance().logOff();
+            CurrentUser.getInstance().setUser(newU);
+            return "redirect:http://localhost:8080/userPage/fill";
+        }else{
+            return "redirect:http://localhost:8080/welcome";
+        }
     }
 }

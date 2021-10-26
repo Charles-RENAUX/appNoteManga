@@ -30,20 +30,29 @@ public class ReviewController {
 
     @GetMapping("/addReview/{idManga}/fill")
     private String getAddReviewPage(ModelMap map, @PathVariable("idManga") long idManga){
-        map.addAttribute("manga", mangaService.getManga(idManga));
-        map.addAttribute("review", new Review());
-        map.addAttribute("connected", CurrentUser.getInstance().isConnected());
-        if(CurrentUser.getInstance().isConnected()){
-            map.addAttribute("user",CurrentUser.getInstance().getUser());
+        if(CurrentUser.getInstance().isConnected()) {
+            map.addAttribute("manga", mangaService.getManga(idManga));
+            map.addAttribute("review", new Review());
+            map.addAttribute("connected", CurrentUser.getInstance().isConnected());
+            if (CurrentUser.getInstance().isConnected()) {
+                map.addAttribute("user", CurrentUser.getInstance().getUser());
+            }
+            return "addReviewPage";
+        }else{
+            return "redirect:http://localhost:8080/welcome";
         }
-        return "addReviewPage";
     }
 
     @RequestMapping(value = "/addReview/{idManga}/form", method = RequestMethod.POST)
     private String submitForm(@ModelAttribute("review") Review review, @PathVariable("idManga") long idManga){
-        review.setManga(mangaService.getManga(idManga));
-        review.setUser(CurrentUser.getInstance().getUser());
-        reviewService.addReview(review);
-        return "redirect:http://localhost:8080/reviewPage/"+idManga;
+        if (CurrentUser.getInstance().isConnected())
+        {
+            review.setManga(mangaService.getManga(idManga));
+            review.setUser(CurrentUser.getInstance().getUser());
+            reviewService.addReview(review);
+            return "redirect:http://localhost:8080/reviewPage/" + idManga;
+        }else{
+            return "redirect:http://localhost:8080/welcome";
+        }
     }
 }

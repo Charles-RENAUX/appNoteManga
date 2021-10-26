@@ -80,21 +80,4 @@ public class UserService {
             return true;
         }
     }
-
-    public Users updateUser(Users user){
-        Users old = null;
-        for(Users userr : userDAO.findAll()){
-            if (user.getId()==userr.getId()){
-                old = userr;
-            }
-        }
-        userDAO.delete(old);
-        addUser(user);
-        for(Users userr : userDAO.findAll()){
-            if (user.getPseudo().equals(userr.getPseudo())){
-                return userr;
-            }
-        }
-        return null;
-    }
 }
