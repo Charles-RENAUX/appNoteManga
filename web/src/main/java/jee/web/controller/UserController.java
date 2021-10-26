@@ -16,6 +16,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Named
 @Controller
@@ -65,10 +66,12 @@ public class UserController{
     }
 
     @RequestMapping(value = "/userPage/form", method = RequestMethod.POST)
-    private String modifyUser(@ModelAttribute("user") Users user, ModelMap map){
-        Users users = userService.updateUser(user);
+    private String modifyUser(@ModelAttribute("user") Users user, ModelMap map) throws InterruptedException {
+        user.setId(CurrentUser.getInstance().getUser().getId());
+        userService.addUser(user);
+        Users newU = userService.findUser(user.getId());
         CurrentUser.getInstance().logOff();
-        CurrentUser.getInstance().setUser(users);
+        CurrentUser.getInstance().setUser(newU);
         return "redirect:http://localhost:8080/userPage/fill";
     }
 }

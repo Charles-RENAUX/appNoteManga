@@ -29,7 +29,7 @@
     <div>
         <h1> Profil utilisateur:</h1>
     </div>
-    <form>
+    <form action="form" method="POST">
         <div>
             #springFormInput("user.name"  "id='boite' placeholder='$user.name' required")
             #springFormInput("user.firstname"  "id='boite' placeholder='$user.firstname' required")
