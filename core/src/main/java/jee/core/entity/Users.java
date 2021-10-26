@@ -10,7 +10,6 @@ public class Users extends GenericEntity {
     private String firstname;
     private String pseudo;
     private String password;
-    private String adress;
     private Boolean adminn;
 
 
@@ -19,12 +18,11 @@ public class Users extends GenericEntity {
         this.adminn = false;
     }
 
-    public Users(String name, String firstname, String pseudo, String password, String adress, Boolean adminn) {
+    public Users(String name, String firstname, String pseudo, String password, Boolean adminn) {
         this.name = name;
         this.firstname = firstname;
         this.pseudo = pseudo;
         this.password = password;
-        this.adress = adress;
         this.adminn = adminn;
     }
 

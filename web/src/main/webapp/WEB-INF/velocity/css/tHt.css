@@ -177,4 +177,22 @@ input.modifUserForm{
     height: 3%;
 }
 
+.adminMajManga{
+    width: 2%;
+    height: 2%;
+    margin-bottom: 1%;
+}
+
+.addMangaIn{
+    display: flex;
+    margin: 0.5%;
+}
+
+.formAddManga{
+    margin: 2%;
+}
+
+#sendModifManga{
+    margin-top: 1%;
+}
 

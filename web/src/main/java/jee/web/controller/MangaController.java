@@ -8,9 +8,7 @@ import jee.web.utils.CurrentUser;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import jee.core.dao.MangaDAO;
 import jee.core.service.MangaService;
@@ -23,10 +21,11 @@ import java.util.List;
 public class MangaController {
 
     private MangaService mangaService;
+    private ReviewService reviewService;
 
-    public MangaController(final MangaDAO mangaDAO) {
+    public MangaController(final MangaDAO mangaDAO, final ReviewDAO reviewDAO) {
         this.mangaService = new MangaService(mangaDAO);
-
+        this.reviewService = new ReviewService(reviewDAO);
     }
 
     @GetMapping("/")
@@ -65,6 +64,44 @@ public class MangaController {
             map.addAttribute("user",CurrentUser.getInstance().getUser());
         }
         return "reviewMangaPage";
+    }
+
+    @GetMapping("/manga/delete/{id}")
+    private String deleteManga(ModelMap map, @PathVariable("id") long id){
+        if(CurrentUser.getInstance().getUser().getAdmin()){
+            mangaService.delete(mangaService.getManga(id));
+            return "redirect:http://localhost:8080/userPage/fill";
+        }else{
+            return "redirect:http://localhost:8080/welcome";
+        }
+    }
+
+    @GetMapping("/manga/update/{id}/fill")
+    private String updateManga(ModelMap map, @PathVariable("id") long id){
+        if(CurrentUser.getInstance().getUser().getAdmin()){
+            map.addAttribute("manga" ,mangaService.getManga(id));
+            map.addAttribute("connected", CurrentUser.getInstance().isConnected());
+            map.addAttribute("user",CurrentUser.getInstance().getUser());
+            return "addMangaPage";
+        }else{
+            return "redirect:http://localhost:8080/welcome";
+        }
+    }
+
+    @PostMapping("/manga/update/{id}/form")
+    private String sendUpdateManga(ModelMap map, @PathVariable("id") long id, @ModelAttribute("manga") Manga manga){
+        if(CurrentUser.getInstance().getUser().getAdmin()){
+            manga.setId(id);
+            manga.setNote();
+            manga.setCreationDate(mangaService.getManga(id).getCreationDate());
+            for(Review review : reviewService.getAllReviewForManga(id)) {
+                reviewService.deleteReview(review);
+            }
+            mangaService.addManga(manga);
+            return "redirect:http://localhost:8080/reviewPage/"+id;
+        }else{
+            return "redirect:http://localhost:8080/welcome";
+        }
     }
 
 }

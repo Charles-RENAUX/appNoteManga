@@ -49,16 +49,20 @@ public class Manga extends GenericEntity{
 
     public void setNote() {
         float _note = 0;
-        System.out.println("Calcule de la note");
-        for (Review review : this.reviewList){
-            System.out.println("Note: "+review.getNote());
-            _note += review.getNote();
+        try {
+            System.out.println("Calcule de la note");
+            for (Review review : this.reviewList) {
+                System.out.println("Note: " + review.getNote());
+                _note += review.getNote();
+            }
+            System.out.println("note total: " + _note + " et la taille: " + this.reviewList.size());
+            _note = _note / (this.reviewList.size());
+            System.out.println("Resultat: " + _note);
+            if (this.note != _note)
+                this.note = _note;
+        }catch (Exception e){
+            this.note=_note;
         }
-        System.out.println("note total: "+_note+" et la taille: "+this.reviewList.size());
-        _note = _note/(this.reviewList.size());
-        System.out.println("Resultat: "+_note);
-        if (this.note != _note)
-            this.note = _note;
     }
 
     public String getImage() {

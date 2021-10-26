@@ -23,6 +23,8 @@ public class CurrentUser {
     }
 
     public Users getUser(){
+        if(user==null)
+            return new Users();
         return (this.user);
     }
 

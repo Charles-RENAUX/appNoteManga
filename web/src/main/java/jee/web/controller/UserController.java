@@ -3,6 +3,7 @@ package jee.web.controller;
 import jee.core.entity.Manga;
 import jee.core.entity.Review;
 import jee.core.entity.Users;
+import jee.core.service.MangaService;
 import jee.core.service.UserService;
 import jee.web.utils.CurrentUser;
 import org.springframework.http.HttpStatus;
@@ -23,9 +24,11 @@ import java.util.concurrent.TimeUnit;
 public class UserController{
 
     private UserService userService;
+    private MangaService mangaService;
 
-    public UserController(UserService userService){
+    public UserController(UserService userService, MangaService mangaService){
         this.userService=userService;
+        this.mangaService = mangaService;
     }
 
     @GetMapping("/login")
@@ -58,6 +61,7 @@ public class UserController{
         if(CurrentUser.getInstance().isConnected()) {
             if(CurrentUser.getInstance().getUser().getAdmin() == true){
                 map.addAttribute("listUsers", userService.getAllUsers());
+                map.addAttribute("listManga", mangaService.getAllMangas());
             }
             map.addAttribute("user", CurrentUser.getInstance().getUser());
             return "UserPge";

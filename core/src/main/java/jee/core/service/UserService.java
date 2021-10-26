@@ -57,7 +57,7 @@ public class UserService {
     }
 
     public void createUser(String name, String firstName, String pseudo, String password, String adress, boolean admin){
-        userDAO.save(new Users(name,firstName,pseudo,password,adress,admin));
+        userDAO.save(new Users(name,firstName,pseudo,password,admin));
     }
 
     public Users findUser(long userId){
@@ -79,5 +79,9 @@ public class UserService {
         }else{
             return true;
         }
+    }
+
+    public List<Users> getAllUsers(){
+        return userDAO.findAll();
     }
 }

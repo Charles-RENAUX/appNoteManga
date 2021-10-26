@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Nouveaux mangas</title>
+    <header>
+        <input id="settingsButtonShow" class="settingsMainButton" type="image" src="https://static.qoqa.ch/pictogram/media/files/000/000/214/png_negative/icon-hl-mecanic.png" size="0" />
+        #if($connected==true)
+            <h1>Bienvenue $user.Pseudo</h1>
+            <input onclick=goToPage("http://localhost:8080/userPage/fill") class="logInMainButton" type="image" src="https://icon-library.com/images/icon-login/icon-login-4.jpg" size="0" />
+        #else
+            <input onclick=goToPage("http://localhost:8080/login") class="logInMainButton" type="image" src="https://icon-library.com/images/registered-icon/registered-icon-24.jpg" size="0" />
+        #end
+    </header>
+    <script>
+        document.getElementById('settingsButtonShow').onclick = function() {
+            var show = document.getElementById("visibilitySettings")
+            if(show.style.visibility=="visible"){
+                show.style.visibility="hidden"
+            }else{
+                show.style.visibility="visible"
+            }
+        };
+        function goToPage(url){
+            window.location.replace(url);
+        }
+    </script>
+</head>
+<body>
+<style type="text/css">
+      #include("css/tHt.css")
+    </style>
+<div class="settingsMenuToShow" id="visibilitySettings" style="visibility: hidden">
+    <div class="divTriangle"></div>
+    <div class="settingsMainMenu">
+        <a class="textButton" href="http://localhost:8080/welcome">Nouveaux</a>
+        <a class="textButton" href="http://localhost:8080/explore">Explorer</a>
+        <a class="textButton">A propos</a>
+    </div>
+</div>
+<div class="formAddManga">
+    <form action="form" method="POST">
+        <div class="formAddMangaContainer">
+            <label for="name">Titre: </label>
+            #springFormInput("manga.name" " class = 'addMangaIn' id='name' required")
+            <label for="resumeAddManga">Synopsis:  </label>
+            #springFormInput("manga.resume" "class = 'addMangaIn' id='resumeAddManga' size=150 required")
+            <label for="image">Lien de la couverture: </label>
+            #springFormInput("manga.image" "class = 'addMangaIn' id='image' size='75' required")
+        </div>
+
+        <button id="sendModifManga" type="submit">Valider les changements</button>
+    </form>
+</div>
+</body>
+</html>

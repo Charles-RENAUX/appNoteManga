@@ -16,12 +16,14 @@ import java.util.List;
 public class MangaService {
 
     private MangaDAO mangaDAO;
+    private ReviewDAO reviewDAO;
 
     public MangaService (final MangaDAO mangaDAO){
         this.mangaDAO = mangaDAO;
     }
 
     public void delete(Manga manga){
+
         mangaDAO.delete(manga);
     }
 
