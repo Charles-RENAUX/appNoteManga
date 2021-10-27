@@ -4,6 +4,8 @@ import jee.core.entity.Users;
 import jee.core.service.UserService;
 import jee.web.utils.CurrentUser;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,8 @@ public class LoginController{
 
     private UserService userService;
 
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+
     public LoginController(UserService userService){
         this.userService=userService;
     }
@@ -37,14 +41,15 @@ public class LoginController{
 
         JSONObject bodyJson = new JSONObject(body);
 
+        logger.info("Trying to log in: "+bodyJson.get("pseudo").toString());
+
         if (userService.canUserConnect(bodyJson.get("pseudo").toString(),bodyJson.get("password").toString())) {
-            // set session
             Users user = userService.findUserByConnexion(bodyJson.get("pseudo").toString(), bodyJson.get("password").toString());
-            System.out.println("TRYING TO LOG: " + bodyJson.get("pseudo").toString() + " mdp: " + bodyJson.get("password").toString());
             CurrentUser.getInstance().setUser(user);
-            System.out.println("CONNECTED");
+            logger.info("Log in succesfull");
             httpResponse.sendRedirect("/welcome");
         }else{
+            logger.info("Error, cannot log in, wrong credentials");
             httpResponse.setStatus(403);
         }
     }

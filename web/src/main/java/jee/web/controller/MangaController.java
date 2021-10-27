@@ -5,6 +5,8 @@ import jee.core.entity.Manga;
 import jee.core.entity.Review;
 import jee.core.service.ReviewService;
 import jee.web.utils.CurrentUser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,6 +24,8 @@ public class MangaController {
 
     private MangaService mangaService;
     private ReviewService reviewService;
+
+    private static final Logger logger = LoggerFactory.getLogger(MangaController.class);
 
     public MangaController(final MangaDAO mangaDAO, final ReviewDAO reviewDAO) {
         this.mangaService = new MangaService(mangaDAO);
@@ -70,8 +74,13 @@ public class MangaController {
     private String deleteManga(ModelMap map, @PathVariable("id") long id){
         if(CurrentUser.getInstance().getUser().getAdmin()){
             mangaService.delete(mangaService.getManga(id));
+            logger.info("User "+CurrentUser.getInstance().getUser().getPseudo()+" delete manga "+mangaService.getManga(id).getName());
             return "redirect:http://localhost:8080/userPage/fill";
         }else{
+            if(CurrentUser.getInstance().isConnected())
+                logger.warn("User "+CurrentUser.getInstance().getUser().getPseudo()+" is trying to delete manga "+mangaService.getManga(id).getName());
+            else
+                logger.warn("anonymous user trying to delete "+mangaService.getManga(id).getName());
             return "redirect:http://localhost:8080/welcome";
         }
     }
@@ -84,6 +93,10 @@ public class MangaController {
             map.addAttribute("user",CurrentUser.getInstance().getUser());
             return "addMangaPage";
         }else{
+            if(CurrentUser.getInstance().isConnected())
+                logger.warn("User "+CurrentUser.getInstance().getUser().getPseudo()+" is trying to access update form for manga "+mangaService.getManga(id).getName());
+            else
+                logger.warn("Anonymous user is trying to access update form for manga "+mangaService.getManga(id).getName());
             return "redirect:http://localhost:8080/welcome";
         }
     }
@@ -94,12 +107,14 @@ public class MangaController {
             manga.setId(id);
             manga.setNote();
             manga.setCreationDate(mangaService.getManga(id).getCreationDate());
+            logger.info("User "+CurrentUser.getInstance().getUser().getPseudo()+" send form to modify "+mangaService.getManga(id).getName());
             for(Review review : reviewService.getAllReviewForManga(id)) {
                 reviewService.deleteReview(review);
             }
             mangaService.addManga(manga);
             return "redirect:http://localhost:8080/reviewPage/"+id;
         }else{
+
             return "redirect:http://localhost:8080/welcome";
         }
     }
