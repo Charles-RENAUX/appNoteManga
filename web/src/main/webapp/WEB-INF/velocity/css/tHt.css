@@ -173,13 +173,19 @@ input.modifUserForm{
 }
 
 .rightCheck{
-    width: 3%;
-    height: 3%;
+    width: 3.5%;
+    height: 3.5%;
 }
 
 .adminMajManga{
     width: 2%;
     height: 2%;
+    margin-bottom: 1%;
+}
+
+.adminDeleteManga{
+    width: 1.5%;
+    height: 1.5%;
     margin-bottom: 1%;
 }
 
@@ -208,5 +214,12 @@ input.modifUserForm{
 }
 
 .addMangaElement{
+    display: inline-block;
+    float: top;
     margin-top: 3%;
+}
+
+.listUserAdmin{
+    display: inline-block;
+    float: right;
 }

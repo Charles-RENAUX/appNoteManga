@@ -53,6 +53,7 @@
         </form>
     #end
     #if ($user.Admin)
+        <div class="listUserAdmin">
         <h1>Liste des utilisateurs:</h1>
     <table>
         <tr>
@@ -66,26 +67,29 @@
                 #if ($uuser.Id!=$user.Id)
                     <td>$uuser.Pseudo</td>
                         #if($uuser.Admin)
-                            <td> <input onclick=goToPage("http://localhost:8080/permission/rmAdmin/"+$uuser.Id) class="rightCheck" type="image" src="https://cdn.pixabay.com/photo/2012/04/11/17/44/check-mark-29114_1280.png"/> </td>
+                            <td style="width: 500px"> <input onclick=goToPage("http://localhost:8080/permission/rmAdmin/"+$uuser.Id) class="rightCheck" type="image" src="https://cdn.pixabay.com/photo/2012/04/11/17/44/check-mark-29114_1280.png"/> </td>
                         #end
                         #if(!$uuser.Admin)
-                            <td> <input onclick=goToPage("http://localhost:8080/permission/addAdmin/"+$uuser.Id) class="checkMark" type="image" src="https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/brown_prodpictxmark_2_1484336303-1.png"/> </td>
+                            <td style="width: 500px"> <input onclick=goToPage("http://localhost:8080/permission/addAdmin/"+$uuser.Id) class="checkMark" type="image" src="https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/brown_prodpictxmark_2_1484336303-1.png"/> </td>
                         #end
                     #end
             </tr>
         </table>
         #end
+    </div>
     <h1>Liste des mangas disponibles</h1>
-        <ul>
-            #foreach($manga in $listManga)
-                <li>
-                    $manga.name
-                </li>
-                <input onclick=goToPage("http://localhost:8080/manga/update/"+$manga.Id+"/fill") class="adminMajManga" type="image" src="https://icons555.com/images/icons-black/image_icon_available_updates_pic_512x512.png" href="http://localhost:8080/"></input>
-                <input onclick=goToPage("http://localhost:8080/manga/delete/"+$manga.Id) class="adminMajManga" type="image" src="https://www.pngplay.com/wp-content/uploads/7/Delete-Logo-Background-PNG-Image.png" href="http://localhost:8080/"></input>
-            #end
-        </ul>
-        <p class="addMangaElement">Ajouter un manga: <input type="image" class="addMangaIcon" onclick=goToPage("http://localhost:8080/manga/new/fill") src="https://clipart-best.com/img/plus/plus-clip-art-7.png" alt="ADD" /></p>
+
+            <ul>
+                #foreach($manga in $listManga)
+                    <li>
+                        $manga.name
+                    </li>
+                    <input onclick=goToPage("http://localhost:8080/manga/update/"+$manga.Id+"/fill") class="adminMajManga" type="image" src="https://icons555.com/images/icons-black/image_icon_available_updates_pic_512x512.png" href="http://localhost:8080/"></input>
+                    <input onclick=goToPage("http://localhost:8080/manga/delete/"+$manga.Id) class="adminMajManga" type="image" src="https://www.pngplay.com/wp-content/uploads/7/Delete-Logo-Background-PNG-Image.png" href="http://localhost:8080/"></input>
+                #end
+            </ul>
+            <p class="addMangaElement">Ajouter un manga: <input type="image" class="addMangaIcon" onclick=goToPage("http://localhost:8080/manga/new/fill") src="https://clipart-best.com/img/plus/plus-clip-art-7.png" alt="ADD" /></p>
+
     #end
 
 </body>
