@@ -49,7 +49,7 @@
             #springFormInput("manga.image" "class = 'addMangaIn' id='image' size='75' required")
         </div>
 
-        <button id="sendModifManga" type="submit">Valider les changements</button>
+        <button id="sendModifManga" type="submit">Valider</button>
     </form>
 </div>
 </body>

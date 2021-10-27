@@ -85,6 +85,7 @@
                 <input onclick=goToPage("http://localhost:8080/manga/delete/"+$manga.Id) class="adminMajManga" type="image" src="https://www.pngplay.com/wp-content/uploads/7/Delete-Logo-Background-PNG-Image.png" href="http://localhost:8080/"></input>
             #end
         </ul>
+        <p class="addMangaElement">Ajouter un manga: <input type="image" class="addMangaIcon" onclick=goToPage("http://localhost:8080/manga/new/fill") src="https://clipart-best.com/img/plus/plus-clip-art-7.png" alt="ADD" /></p>
     #end
 
 </body>

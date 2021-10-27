@@ -16,6 +16,7 @@ import jee.core.dao.MangaDAO;
 import jee.core.service.MangaService;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -73,8 +74,8 @@ public class MangaController {
     @GetMapping("/manga/delete/{id}")
     private String deleteManga(ModelMap map, @PathVariable("id") long id){
         if(CurrentUser.getInstance().getUser().getAdmin()){
-            mangaService.delete(mangaService.getManga(id));
             logger.info("User "+CurrentUser.getInstance().getUser().getPseudo()+" delete manga "+mangaService.getManga(id).getName());
+            mangaService.delete(mangaService.getManga(id));
             return "redirect:http://localhost:8080/userPage/fill";
         }else{
             if(CurrentUser.getInstance().isConnected())
@@ -117,6 +118,38 @@ public class MangaController {
 
             return "redirect:http://localhost:8080/welcome";
         }
+    }
+
+    @GetMapping("/manga/new/fill")
+    private String addNewManga(ModelMap map){
+        if(CurrentUser.getInstance().getUser().getAdmin()){
+            map.addAttribute("manga" ,new Manga());
+            map.addAttribute("connected", CurrentUser.getInstance().isConnected());
+            map.addAttribute("user",CurrentUser.getInstance().getUser());
+            return "addMangaPage";
+        }else{
+            if(CurrentUser.getInstance().isConnected())
+                logger.warn("User "+CurrentUser.getInstance().getUser().getPseudo()+" is trying to access add form manga ");
+            else
+                logger.warn("Anonymous user is trying to access add form manga ");
+            return "redirect:http://localhost:8080/welcome";
+        }
+    }
+
+    @PostMapping("/manga/new/form")
+    private String sendUpdateManga(ModelMap map, @ModelAttribute("manga") Manga manga){
+        if(CurrentUser.getInstance().getUser().getAdmin()){
+            manga.setNote();
+            manga.setCreationDate(new Date(System.currentTimeMillis()));
+            logger.info("User "+CurrentUser.getInstance().getUser().getPseudo()+" send form to add manga  "+manga.getName());
+            mangaService.addManga(manga);
+        }else{
+            if(CurrentUser.getInstance().isConnected())
+                logger.warn("User "+CurrentUser.getInstance().getUser().getPseudo()+" is trying to send add form manga ");
+            else
+                logger.warn("Anonymous user is trying to send add form manga ");
+        }
+        return "redirect:http://localhost:8080/welcome";
     }
 
 }
