@@ -1,5 +1,7 @@
 package jee.core.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -14,12 +16,13 @@ public class ReviewService {
 
     private ReviewDAO reviewDAO;
 
+    private static final Logger logger = LoggerFactory.getLogger(ReviewService.class);
+
     public ReviewService (ReviewDAO _reviewDao){
         this.reviewDAO = _reviewDao;
     }
 
     public void addReview(Review review){
-        review.setId(getLastId());
         reviewDAO.save(review);
     }
 
@@ -51,20 +54,9 @@ public class ReviewService {
         reviewDAO.deleteById(id);
     }
 
-    public long getLastId(){
-        long idMax = 1;
-        for(Review review : reviewDAO.findAll()){
-            if(review.getId()>idMax)
-                idMax=review.getId();
-        }
-        return idMax;
-    }
 
     public Review getReview(long id){
-        for (Review review : reviewDAO.findAll()){
-            if (review.getId()==id)
-                return review;
-        }
-        return new Review();
+        Review r = reviewDAO.findById(id).get();
+        return r;
     }
 }

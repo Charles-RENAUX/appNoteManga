@@ -23,7 +23,6 @@ public class MangaService {
     }
 
     public void delete(Manga manga){
-
         mangaDAO.delete(manga);
     }
 
